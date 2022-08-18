@@ -1,0 +1,180 @@
+body {
+    margin: 0;
+    font-family: rubik, sans-serif;
+    font-style: normal;
+}
+
+#taskbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffd700;
+}
+
+#logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 100%;
+}
+
+#logo {
+    margin-left: 20px;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#taskbar-icon {
+    margin-right: 20px;
+    color: #0057b7;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn-2 {
+    margin-left: 30px;
+    border: 0;
+    background-color: transparent;
+    color: #0057b7;
+    width: fit-content;
+    height: 50%;
+    font-weight: bold;
+}
+
+#btn-2:hover {
+    transition: ease-in-out 0.3s;
+    color: gray;
+    cursor: pointer;
+}
+
+@keyframes scroll {
+    0%
+    {
+        transform: translateX(0);
+    }
+    100%
+    {
+        transform: translateX(-2880px);
+    }
+
+}
+
+#banner {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll ;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #0057b7;
+    transition: all 0.5s;
+}
+
+#banner-container {
+    scroll-behavior: smooth;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+}
+
+#banner-container div {
+    height: fit-content;
+    width: fit-content
+}
+
+#body-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#products-scrollview {
+    background-color: linear-gradient(#1ED7B5ff, #41DDB3ff, #64E2B0ff, #87E8AEff, #AAEEACff, #CDF3A9ff, #F0F9A7ff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px;
+    width: 20%;
+    height: 90vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 0.5em;
+}
+
+#products-scrollview div {
+    height: fit-content;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#btn-1 {
+    border: 1px solid #0057b7;
+    border-radius: 10px;
+    background-color: #0057b7;
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFFFFF;
+    width: 80%;
+    height: 50px;
+    padding: 10px;
+}
+
+#btn-1:hover {
+    transition: ease-in-out 0.3s;
+    color: #0057b7;
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+
+#articles {
+    width: 70%;
+    height: 15%;
+    margin: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#articles div {
+    margin: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+#footer {
+    margin: 0;
+    width: 100%;
+    height: 10vh;
+    background-color: #0057b7;
+    display: flex;
+    align-items: center;
+}
+
+#footer p {
+    color: white;
+}
+
+.half-sized {
+    max-width: 16px;
+}
+
+.flex-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
