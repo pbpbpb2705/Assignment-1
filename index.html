@@ -8,7 +8,7 @@
   <meta name="keywords" content="HTML, CSS" />
   <meta name="description" content="This is the index page" />
   <link rel="icon" href="images/logo.png" />
-  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="./styles/style.css" />
   <link rel="stylesheet" href="https://use.typekit.net/vvm8zgw.css">
   <title>Nameless</title>
 </head>
@@ -19,67 +19,30 @@
       <img src="images/logo.png" alt="Nameless" id="logo" />
     </a>
     <div id="taskbar-icon">
-      <button id="btn-2" onclick="window.location='index.html'">
+      <button class="btn-2" onclick="window.location='index.html'">
 
         Home
       </button>
-      <button id="btn-2" onclick="window.location='about.html'">
+      <button class="btn-2" onclick="window.location='about.html'">
 
         About
       </button>
-      <button id="btn-2" onclick="window.location='products.html'">
+      <button class="btn-2" onclick="window.location='products.html'">
 
         Products
       </button>
-      <button id="btn-2" onclick="window.location='enquiry.html'">
+      <button class="btn-2" onclick="window.location='enquiry.html'">
 
         Enquiry
       </button>
-      <button id="btn-2" onclick="window.location='enhancements.html'">
+      <button class="btn-2" onclick="window.location='enhancements.html'">
 
         Enhancements
       </button>
     </div>
   </div>
   <div id="banner">
-    <div id="banner-container">
-      <div id="banner-1">
-        <img src="images/banner.png" alt="Banner 1" id="banner-1" />
-        <button id="btn-3" class="btn-left" onclick="window.location='index.html#banner-4'">
-          Back
-        </button>
-        <button id="btn-3" class="btn-right" onclick="window.location='index.html#banner-2'">
-          Next
-        </button>
-      </div>
-      <div id="banner-2">
-        <img src="images/banner.png" alt="Banner 1" id="banner-2" />
-        <button id="btn-3" class="btn-left" onclick="window.location='index.html#banner-1'">
-          Back
-        </button>
-        <button id="btn-3" class="btn-right" onclick="window.location='index.html#banner-3'">
-          Next
-        </button>
-      </div>
-      <div id="banner-3">
-        <img src="images/banner.png" alt="Banner 1" id="banner-3" />
-        <button id="btn-3" class="btn-left" onclick="window.location='index.html#banner-2'">
-          Back
-        </button>
-        <button id="btn-3" class="btn-right" onclick="window.location='index.html#banner-4'">
-          Next
-        </button>
-      </div>
-      <div id="banner-4">
-        <img src="images/banner.png" alt="Banner 1" id="banner-4" />
-        <button id="btn-3" class="btn-left" onclick="window.location='index.html#banner-3'">
-          Back
-        </button>
-        <button id="btn-3" class="btn-right" onclick="window.location='index.html#banner-1'">
-          Next
-        </button>
-      </div>
-    </div>
+      <img src="images/banner.png" alt="Banner 1" id="banner-1" />
   </div>
   <div id="body-container">
     <div id="products-scrollview">
@@ -114,22 +77,32 @@
       <button id="btn-1" onclick="window.location='products.html'">PRODUCTS</button>
     </div>
     <div id="articles">
-      <div id="article-1">
+      <div id="article-1" class="article">
         <h3>Article 1</h3>
         <p>description</p>
       </div>
-      <div id="article-2">
+      <div id="article-2" class="article">
         <h3>Article 2</h3>
-        <p>description</p>
+        <p id="dropdown1">description</p>
       </div>
-      <div id="article-3">
+      <div id="article-3" class="article">
         <h3>Article 3</h3>
         <p>description</p>
       </div>
     </div>
   </div>
   <div id="footer">
-    <p>&copy; Copyright 2022 - Nameless</p>
+    <aside>
+      &copy; Copyright 2022 - Nameless <br> <br>
+      Team member:
+      <ul>
+        <li> Quoc Bao Pham</li>
+        <li> Nguyen Hung Nguyen</li>
+        <li> Hoang Hieu Nguyen</li>
+        <li> Trung Kien Nguyen</li>
+        <li> Minh Thanh Dang</li>
+      </ul>
+    </aside>
 </body>
 
 </html>

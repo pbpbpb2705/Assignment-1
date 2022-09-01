@@ -1,3 +1,16 @@
+/*
+filename: style.css
+author: Quoc Bao Pham
+created: 22/8/2022
+last modified: 22/8/2022
+description: Assignment 1 Styling
+*/
+
+
+/*
+Styling for index.html
+*/
+
 body {
     margin: 0;
     font-family: rubik, sans-serif;
@@ -41,7 +54,7 @@ body {
     align-items: center;
 }
 
-#btn-2 {
+.btn-2 {
     margin-left: 30px;
     border: 0;
     background-color: transparent;
@@ -51,22 +64,10 @@ body {
     font-weight: bold;
 }
 
-#btn-2:hover {
+.btn-2:hover {
     transition: ease-in-out 0.3s;
     color: gray;
     cursor: pointer;
-}
-
-@keyframes scroll {
-    0%
-    {
-        transform: translateX(0);
-    }
-    100%
-    {
-        transform: translateX(-2880px);
-    }
-
 }
 
 #banner {
@@ -80,21 +81,10 @@ body {
     transition: all 0.5s;
 }
 
-#banner-container {
-    scroll-behavior: smooth;
-    width: fit-content;
-    display: flex;
-    flex-direction: row;
-}
-
-#banner-container div {
-    height: fit-content;
-    width: fit-content
-}
-
 #body-container {
     display: flex;
     flex-direction: row;
+    height: fit-content;
 }
 
 #products-scrollview {
@@ -103,9 +93,9 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    margin: 20px;
+    padding: 20px;
     width: 20%;
-    height: 90vh;
+    height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
     padding: 0.5em;
@@ -137,9 +127,8 @@ body {
 }
 
 #articles {
-    width: 70%;
-    height: 15%;
-    margin: 20px;
+    width: 80%;
+    height: fit-content;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 0.5em;
@@ -149,22 +138,28 @@ body {
     align-items: center;
 }
 
-#articles div {
+.article{
+    height: 60vh;
     margin: 20px;
     width: 100%;
     text-align: center;
 }
 
+#article-1, #article-3 {
+    background-color: yellow;
+}
+
 #footer {
     margin: 0;
     width: 100%;
-    height: 10vh;
+    height: fit-content;
     background-color: #0057b7;
+    padding-top: 20px;
     display: flex;
     align-items: center;
 }
 
-#footer p {
+#footer aside {
     color: white;
 }
 
@@ -178,3 +173,73 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+@media screen and (max-width : 800px) {
+    #products-scrollview {
+        width: 0;
+        padding: 0;
+    }
+
+    #articles {
+        width: 100%;
+    }
+
+    .btn-2 {
+        font-size: 12px;
+        margin-left: 10px;
+    }
+
+
+}
+
+/*
+Styling for about.html
+*/
+
+.tag {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+}
+
+.tag-image {
+    height: 100%;
+}
+
+.tag-text {
+    font-size: 18px;
+    margin-right: 20px;
+    width: fit-content;
+}
+
+#tag-1, #tag-3, #tag-5 {
+    justify-content: flex-end;
+    background-color: gray;
+}
+
+#tag-2, #tag-4 {
+    justify-content: flex-start;
+}
+
+#tag-image-1 {
+    content: url(/images/logo.png);
+}
+
+#tag-image-2 {
+    content: url(/images/about.png);
+}
+
+#tag-image-3 {
+    content: url(/images/about.png);
+}
+
+#tag-image-4 {
+    content: url(/images/about.png);
+}
+
+#tag-image-5 {
+    content: url(/images/about.png);
+}
+
+
