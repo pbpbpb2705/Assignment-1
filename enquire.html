@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./styles/style.css" />
+    <title>Enquire page </title>
+</head>
+<body>
+    <div id="taskbar">
+        <a href="index.html" id="logo-container">
+          <img src="images/logo.png" alt="Nameless" id="logo" />
+        </a>
+        <div id="taskbar-icon">
+          <button class="btn-2" onclick="window.location='index.html'">
+
+            Home
+          </button>
+          <button class="btn-2" onclick="window.location='about.html'">
+
+            About
+          </button>
+          <button class="btn-2" onclick="window.location='products.html'">
+
+            Products
+          </button>
+          <button class="btn-2" onclick="window.location='enquire.html'">
+
+            Enquiry
+          </button>
+          <button class="btn-2" onclick="window.location='enhancements.html'">
+
+            Enhancements
+          </button>
+        </div>
+      </div>
+
+    <section id="page-box">
+    <section id="section1">
+        <h1 id="form-title">Customer Enquiry Form</h1>
+
+        <p id="require"><em><strong>*Please fill in all the answer in the form</strong></em></p>
+
+        <form id="form" method="post" action="https://mercury.swin.edu.au/it000000/formtest.php">
+            <fieldset id="name">
+                <legend><label for="first_name_box">Name</label></legend>
+                <div id="first">
+                    <input type="text" name="first_name" id="first_name_box" required="required" maxlength="25" pattern="[A-Za-z]+">
+                    <br>
+                    <label class="name_label" for="first_name_box">First</label>
+                </div>
+                <div id="last">
+                    <input type="text" name="last_name" id="last_name_box" required="required" maxlength="25" pattern="[A-Za-z]+">
+                    <br>
+                    <label class="name_label" for="last_name_box">Last</label>
+                </div>
+            </fieldset>
+
+
+            <fieldset id="email_box">
+                <legend>
+                    <label for="email">Email</label>
+                </legend>
+                <input type="email" name="email" id="email" required="required">
+            </fieldset>
+
+            <br>
+
+            <div>
+            <fieldset id="address">
+                <legend>Address</legend>
+                <label for="street">Street Address</label>
+                <input type="text" name="street" id="street" required="required" maxlength="40">
+                <br />
+                <label for="suburb">Suburb/Town</label>
+                <input type="text" name="suburb" id="suburb" required="required" maxlength="20">
+                <br />
+                <label for="state">State</label>
+                <select name="state" id="state">
+                    <option value="8">VIC</option>
+                    <option value="7">NSW</option>
+                    <option value="6">QLD</option>
+                    <option value="5">NT</option>
+                    <option value="4">WA</option>
+                    <option value="3">SA</option>
+                    <option value="2">TAS</option>
+                    <option value="1">ACT</option>
+                </select>
+                <label for="postcode">Postcode</label>
+                <input type="text" name="postcode" id="postcode" maxlength="4" size="10" required="required" pattern="[0-9]+">
+            </fieldset>
+
+            <fieldset id="phone_field">
+                <legend><label for="Phone">Phone number</label></legend>
+                <input name="phone" id="Phone" type="text" maxlength="10" required="required" pattern="[0-9]+" placeholder="e.g 000-000-0000"></p>
+            </fieldset>
+
+            <fieldset id="pref_contact">
+                <legend id="pref_contact_legend">Preferred contact</legend>
+
+                <label class="choose_contact">Email
+                    <input required="required" type="radio" name="contact" value="1">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="choose_contact">Post
+                    <input required="required" type="radio" name="contact" value="2">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="choose_contact">Phone
+                    <input required="required" type="radio" name="contact" value="3">
+                    <span class="checkmark"></span>
+                </label>
+            </fieldset>
+            </div>
+
+            <br>
+
+            <fieldset id="products">
+                <legend><label for="product">Product</label></legend>
+                <select name="product" id="product">
+                    <option value="0">Choose an option</option>
+                    <option value="1">15$/7days</option>
+                    <option value="2">25$/14days</option>
+                    <option value="3">35$/21days</option>
+                    <option value="4">45$/28days</option>
+                    <option value="5">55$/28days</option>
+                    <option value="6">65$/28days</option>
+                    <option value="7">155$/28days</option>
+                    <option value="8">1000$/365days</option>
+                </select>
+            </fieldset>
+
+            <fieldset id="feature_field">
+                <legend>Product feature:</legend>
+
+                <label class="choose_feature">Data
+                    <input type="checkbox" name="feature" value="1">
+                    <span class="checksquare"></span>
+                </label>
+
+
+                <label class="choose_feature">Infinite Data
+                    <input type="checkbox" name="feature" value="2">
+                    <span class="checksquare"></span>
+                </label>
+
+
+                <label class="choose_feature">Unlimited Call&Text
+                    <input type="checkbox" name="feature" value="3">
+                    <span class="checksquare"></span>
+                </label>
+
+                <label class="choose_feature">Data bank
+                    <input type="checkbox" name="feature" value="4">
+                    <span class="checksquare"></span>
+                </label>
+
+                <label class="choose_feature">International talk zone 1
+                    <input type="checkbox" name="feature" value="5">
+                    <span class="checksquare"></span>
+                </label>
+
+                <label class="choose_feature">International talk zone 2
+                    <input type="checkbox" name="feature" value="6">
+                    <span class="checksquare"></span>
+                </label>
+            </fieldset>
+
+            <fieldset id="comments_field">
+                <legend><label for="comments">Comments:</label></legend>
+                <textarea id="comments" name="comments" placeholder="Enter your comments here"></textarea>
+
+            </fieldset>
+            <fieldset id="submit">
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset">
+            </fieldset>
+
+            <br>
+        </form>
+    </section>
+    </section>
+    <div id="footer">
+        <aside class="footer-content">&copy; Copyright 2022 - Nameless <br> <br> </aside>
+        <p class="footer-content">Team member:</p>
+        <ul class="footer-content">
+          <li> Quoc Bao Pham</li>
+          <li> Nguyen Hung Nguyen</li>
+          <li> Hoang Hieu Nguyen</li>
+          <li> Trung Kien Nguyen</li>
+          <li> Minh Thanh Dang</li>
+        </ul>
+      </div>
+</body>

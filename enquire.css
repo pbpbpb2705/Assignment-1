@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+
+
+* {
+    font-family: 'Rubik', sans-serif;
+}
+
+#title {
+    font-family: 'Rubik', sans-serif;
+    font-size: 2.3em;
+    font-weight: 900;
+    color: blue;
+    text-align: center;
+}
+
+#section1 {
+    display: inline-block;
+    min-width: 500px;
+    max-width: 940px;
+    width: 70%;
+    height: 50%;
+    background-color: #7B0101;
+    border: 2px solid #add8e6;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 5%;
+    margin-bottom: 7%;
+    border-radius: 80px;
+    border-width: 0.8em;
+}
+
+input {
+    border-radius: 6px;
+    border-color: #add8e6;
+    height: 2em;
+    box-shadow: -3px 3px #add8e6;
+    font-weight: bold;
+    padding-left: 6px;
+}
+
+fieldset {
+    border-style: none;
+    padding-left: 1%;
+    margin-left: 3%;
+}
+
+legend{
+    font-size: 120%;
+    font-weight: bold;
+    color: blue;
+    line-height: 9px;
+}
+
+#first {
+    float: left;
+}
+
+#last {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.name_label {
+    font-size: 80%;
+}
+
+#email {
+    width: 80%;
+}
+
+#address {
+    position: relative;
+    display: block;
+    float: left;
+    border: 4px solid #add8e6;
+    max-width: 45%;
+    min-width: 45%;
+    margin-left: 4%;
+    line-height: 50px;
+}
+
+#phone_field {
+    display: block;
+    float: left;
+
+
+
+}
+
+#pref_contact {
+    display: block;
+    clear: right;
+    float: left;
+    border: 4px solid #add8e6;
+    width: 34%;
+    min-width: 19%;
+}
+
+#require {
+    padding-left: 40px;
+}
+
+#products {
+    border: 4px solid #add8e6;
+    display: block;
+    clear: both;
+    float: left;
+    width: 45%;
+    min-width: 26%;
+    margin-top: 15px;
+    margin-left: 4%;
+    line-height: 40px;
+}
+
+#feature_field {
+    position: relative;
+    display: block;
+    top: 18px;
+
+    padding-left: 3%;
+
+}
+
+#comments_field {
+    margin-top: 15px;
+}
+
+#comments {
+    border: 4px solid #add8e6;
+    border-radius: 8px;
+    width: 96.5%;
+    height: 8em;
+}
+
+#submit {
+    padding-left: 25px;
+    font-size: large;
+    font-weight: bold;
+}
+
+/* Create custom radio buttons */
+.choose_contact {
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    margin-top: 6px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.choose_contact input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/*Make the button grey when hover, blue when checked with dot in the middle */
+.choose_contact:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.choose_contact input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.choose_contact input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.choose_contact .checkmark:after {
+    top: 6px;
+    left: 6px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: white;
+}
+
+/* Create custom checkbox buttons */
+.choose_feature {
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.choose_feature input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checksquare {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: #eee;
+}
+
+/*Make the button grey when hover, blue when checked with tick in the middle*/
+.choose_feature:hover input ~ .checksquare {
+    background-color: #ccc;
+}
+
+
+.choose_feature input:checked ~ .checksquare {
+    background-color: #2196F3;
+}
+
+.checksquare:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.choose_feature input:checked ~ .checksquare:after {
+    display: block;
+}
+
+.choose_feature .checksquare:after {
+    left: 5px;
+    top: 0px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+@media screen and (max-width: 715px) {
+    #section1 {
+        width: 96%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #page-box {
+        margin-left: calc((1vw - 500px)/2);
+    }
+}
