@@ -67,6 +67,7 @@ body {
   width: fit-content;
   height: 50%;
   font-weight: bold;
+  font-size: 18px;
 }
 
 .btn-2:hover {
@@ -153,16 +154,14 @@ body {
   text-align: center;
 }
 
-.article p {
-  color: white;
-}
-
 #article-1 {
-  background-color: #7b0101;
+  background-color: transparent;
+  color: black;
 }
 
 #article-2 {
   background-color: #da0106;
+  color: white;
 }
 
 #footer {
@@ -323,13 +322,12 @@ Styling for products.html
 }
 
 .dropdown-button:hover + .dropdown-content {
-  width: fit-content;
+  height: fit-content;
   visibility: visible;
-  width: fit-content;
 }
 
 .dropdown-content {
-  width: 0%;
+  height: 0;
   visibility: hidden;
 }
 
@@ -438,7 +436,7 @@ Styling for products.html
   color: black;
   height: fit-content;
   border-radius: 15px;
-  transform: all 1s;
+  transition: all 1s ease-in-out;
 }
 
 table {
