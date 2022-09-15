@@ -214,17 +214,27 @@ Styling for about.html
 .tag {
   width: 100%;
   height: fit-content;
-  display: flex;
   flex-direction: column;
   padding: 20px;
 }
 
+.email-link {
+  text-decoration: none;
+  color: black;
+}
+
+figure {
+  float: right;
+  margin-right: 5%;
+}
+
 .tag-image {
   width: 15vw;
+  border: double 3px black;
 }
 
 .tag-text {
-  width: 90%;
+  width: 80%;
   font-size: 18px;
   margin-right: 20px;
 }
@@ -233,7 +243,7 @@ Styling for about.html
 #tag-3,
 #tag-5 {
   justify-content: flex-end;
-  background-color: #f7c9b0;
+  background-color: #ff3939;
 }
 
 #tag-2,
@@ -274,6 +284,13 @@ Styling for about.html
 /*
 Styling for products.html
 */
+
+aside {
+  width: 25%;
+  float: right;
+  border: solid 1px red;
+  margin: auto;
+}
 
 .flex-container1 {
   display: flex;
@@ -364,7 +381,17 @@ Styling for products.html
   padding: 0.1%;
 }
 
-#ctn_2,
+#ctn_2 {
+  width: 100%;
+  height: auto;
+  background-color: rgb(255, 255, 255);
+  padding-top: 2%;
+  padding-bottom: 2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 #ctn_5 {
   width: 60%;
   height: auto;
@@ -447,12 +474,12 @@ table {
   margin: auto;
 }
 
-table tr :first-child,
-tr :nth-child(3),
-tr :nth-child(5),
-tr :nth-child(7),
-tr :nth-child(9) {
+th {
   background-color: #add8e6;
+}
+
+td {
+  background-color: #f7d3d8;
 }
 
 #table-header {
@@ -470,6 +497,8 @@ td {
 .para_0 {
   text-align: center;
   font-size: 120%;
+  width: 70%;
+  margin-left: 2%;
 }
 
 .para_1 {
