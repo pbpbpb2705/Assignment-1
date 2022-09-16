@@ -710,8 +710,8 @@ legend {
   position: relative;
   display: block;
   top: 18px;
-
   padding-left: 3%;
+  width: fit-content;
 }
 
 #comments_field {
