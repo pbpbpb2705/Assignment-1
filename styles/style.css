@@ -1,8 +1,7 @@
 /*
 filename: style.css
-author: Quoc Bao Pham
 created: 22/8/2022
-last modified: 22/8/2022
+last modified: 16/9/2022
 description: Assignment 1 Styling
 */
 
@@ -19,6 +18,64 @@ body {
   background-color: #f7d3d8;
   margin: 0;
   font-style: normal;
+}
+
+.btn-2 {
+  margin-left: 30px;
+  border: 0;
+  background-color: transparent;
+  color: #ffffff;
+  width: fit-content;
+  height: 50%;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.btn-2:hover {
+  transition: ease-in-out 0.3s;
+  color: gray;
+  cursor: pointer;
+}
+
+.product-image {
+  width: 90%;
+}
+
+.btn-1 {
+  border-radius: 10px;
+  background-color: #de4a4d;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  width: 80%;
+  height: 50px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.btn-1:hover {
+  transition: ease-in-out 0.3s;
+  color: #de4a4d;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.article {
+  height: 50%;
+  width: 100%;
+  text-align: center;
+}
+
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-content {
+  color: white;
+  margin-top: 0;
 }
 
 #taskbar {
@@ -59,23 +116,6 @@ body {
   align-items: center;
 }
 
-.btn-2 {
-  margin-left: 30px;
-  border: 0;
-  background-color: transparent;
-  color: #ffffff;
-  width: fit-content;
-  height: 50%;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.btn-2:hover {
-  transition: ease-in-out 0.3s;
-  color: gray;
-  cursor: pointer;
-}
-
 #banner {
   display: flex;
   flex-direction: row;
@@ -113,30 +153,6 @@ body {
   margin-bottom: 10px;
 }
 
-.product-image {
-  width: 90%;
-}
-
-.btn-1 {
-  border: 1px solid #0057b7;
-  border-radius: 10px;
-  background-color: #0057b7;
-  font-size: 20px;
-  font-weight: bold;
-  color: #ffffff;
-  width: 80%;
-  height: 50px;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-.btn-1:hover {
-  transition: ease-in-out 0.3s;
-  color: #0057b7;
-  background-color: #ffffff;
-  cursor: pointer;
-}
-
 #articles {
   width: 80%;
   height: 100%;
@@ -146,12 +162,6 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-}
-
-.article {
-  height: 50%;
-  width: 100%;
-  text-align: center;
 }
 
 #article-1 {
@@ -175,23 +185,17 @@ body {
   justify-content: center;
 }
 
-.footer-content {
-  color: white;
-  margin-top: 0;
-}
-
 #footer p {
   margin-left: 20px;
 }
 
-.flex-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
 @media screen and (max-width: 800px) {
+
+  .btn-2 {
+    font-size: 12px;
+    margin-left: 10px;
+  }
+
   #products-scrollview {
     width: 0;
     padding: 0;
@@ -201,31 +205,28 @@ body {
     width: 100%;
   }
 
-  .btn-2 {
-    font-size: 12px;
-    margin-left: 10px;
-  }
 }
 
 /*
 Styling for about.html
 */
 
+figure {
+  float: right;
+  margin-right: 5%;
+}
+
 .tag {
   width: 100%;
   height: fit-content;
   flex-direction: column;
-  padding: 20px;
+  border-bottom: solid 1px black;
+  padding-bottom: 20px;
 }
 
 .email-link {
   text-decoration: none;
   color: black;
-}
-
-figure {
-  float: right;
-  margin-right: 5%;
 }
 
 .tag-image {
@@ -239,36 +240,8 @@ figure {
   margin-right: 20px;
 }
 
-#tag-1,
-#tag-3,
 #tag-5 {
-  justify-content: flex-end;
-  background-color: #ff3939;
-}
-
-#tag-2,
-#tag-4 {
-  justify-content: flex-start;
-}
-
-#tag-image-1 {
-  content: url(/images/members/member-1.jpg);
-}
-
-#tag-image-2 {
-  content: url(/images/about.png);
-}
-
-#tag-image-3 {
-  content: url(/images/about.png);
-}
-
-#tag-image-4 {
-  content: url(/images/about.png);
-}
-
-#tag-image-5 {
-  content: url(/images/about.png);
+  border: 0;
 }
 
 @media screen and (max-width: 1000px) {
@@ -290,6 +263,30 @@ aside {
   float: right;
   border: solid 1px red;
   margin: auto;
+}
+
+.table-1 {
+  border: 3px solid;
+  border-collapse: collapse;
+  width: 80%;
+  text-align: center;
+  margin: auto;
+}
+
+.table-1 th {
+  background-color: #c1e0ea;
+}
+
+.table-1 td {
+  background-color: #f7d3d8;
+}
+
+th,
+td {
+  border: 3px solid;
+  border-collapse: collapse;
+  width: 10vw;
+  text-align: center;
 }
 
 .flex-container1 {
@@ -326,10 +323,6 @@ aside {
   border-radius: 15px;
 }
 
-#background {
-  background-color: white;
-}
-
 .flex-container1 > div {
   font-size: 30px;
 }
@@ -347,6 +340,27 @@ aside {
   height: 0;
   visibility: hidden;
 }
+
+.table-header {
+  font-weight: 400;
+}
+
+.para_0 {
+  text-align: center;
+  font-size: 120%;
+  width: 70%;
+  margin-left: 2%;
+}
+
+.para_1 {
+  font-weight: bold;
+  font-size: larger;
+}
+
+#background {
+  background-color: white;
+}
+
 
 #banner {
   display: flex;
@@ -466,70 +480,9 @@ aside {
   transition: all 1s ease-in-out;
 }
 
-table {
-  border: 3px solid;
-  border-collapse: collapse;
-  width: 80%;
-  text-align: center;
-  margin: auto;
-}
-
-th {
-  background-color: #add8e6;
-}
-
-td {
-  background-color: #f7d3d8;
-}
-
-#table-header {
-  font-weight: 400;
-}
-
-th,
-td {
-  border: 3px solid;
-  border-collapse: collapse;
-  width: 10vw;
-  text-align: center;
-}
-
-.para_0 {
-  text-align: center;
-  font-size: 120%;
-  width: 70%;
-  margin-left: 2%;
-}
-
-.para_1 {
-  font-weight: bold;
-  font-size: larger;
-}
 /*
 Styling for enquire.html
 */
-
-#form-title {
-  font-size: 2.3em;
-  font-weight: 900;
-  color: #e99c0e;
-  text-align: center;
-}
-
-#section1 {
-  display: inline-block;
-  min-width: 500px;
-  max-width: 940px;
-  width: 70%;
-  height: 50%;
-  background-color: #add8e6;
-  margin-left: 15%;
-  margin-right: 15%;
-  margin-top: 5%;
-  margin-bottom: 7%;
-  border-radius: 80px;
-  border-width: 0.8em;
-}
 
 input {
   border-radius: 6px;
@@ -553,87 +506,8 @@ legend {
   line-height: 9px;
 }
 
-#first {
-  float: left;
-}
-
-#last {
-  display: inline-block;
-  margin-left: 20px;
-}
-
 .name_label {
   font-size: 80%;
-}
-
-#email {
-  width: 80%;
-}
-
-#address {
-  position: relative;
-  display: block;
-  float: left;
-  border: 4px solid #add8e6;
-  max-width: 45%;
-  min-width: 45%;
-  margin-left: 4%;
-  line-height: 50px;
-}
-
-#phone_field {
-  display: block;
-  float: left;
-}
-
-#pref_contact {
-  display: block;
-  clear: right;
-  float: left;
-  border: 4px solid #add8e6;
-  width: 34%;
-  min-width: 19%;
-}
-
-#require {
-  padding-left: 40px;
-}
-
-#products {
-  border: 4px solid #add8e6;
-  display: block;
-  clear: both;
-  float: left;
-  width: 45%;
-  min-width: 26%;
-  margin-top: 15px;
-  margin-left: 4%;
-  line-height: 40px;
-}
-
-#feature_field {
-  position: relative;
-  display: block;
-  top: 18px;
-
-  padding-left: 3%;
-}
-
-#comments_field {
-  margin-top: 15px;
-}
-
-#comments {
-  border: 4px solid #add8e6;
-  border-radius: 8px;
-  width: 96.5%;
-  height: 8em;
-}
-
-#submit {
-  padding-left: 25px;
-  font-size: large;
-  font-weight: bold;
 }
 
 /* Create custom radio buttons */
@@ -754,6 +628,107 @@ legend {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+#form-title {
+  font-size: 2.3em;
+  font-weight: 900;
+  color: #e99c0e;
+  text-align: center;
+}
+
+#section1 {
+  display: inline-block;
+  min-width: 500px;
+  max-width: 940px;
+  width: 70%;
+  height: 50%;
+  background-color: #add8e6;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 5%;
+  margin-bottom: 7%;
+  border-radius: 80px;
+  border-width: 0.8em;
+}
+
+#first {
+  float: left;
+}
+
+#last {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+#email {
+  width: 80%;
+}
+
+#address {
+  position: relative;
+  display: block;
+  float: left;
+  border: 4px solid #add8e6;
+  max-width: 45%;
+  min-width: 45%;
+  margin-left: 4%;
+  line-height: 50px;
+}
+
+#phone_field {
+  display: block;
+  float: left;
+}
+
+#pref_contact {
+  display: block;
+  clear: right;
+  float: left;
+  border: 4px solid #add8e6;
+  width: 34%;
+  min-width: 19%;
+}
+
+#require {
+  padding-left: 40px;
+}
+
+#products {
+  border: 4px solid #add8e6;
+  display: block;
+  clear: both;
+  float: left;
+  width: 45%;
+  min-width: 26%;
+  margin-top: 15px;
+  margin-left: 4%;
+  line-height: 40px;
+}
+
+#feature_field {
+  position: relative;
+  display: block;
+  top: 18px;
+
+  padding-left: 3%;
+}
+
+#comments_field {
+  margin-top: 15px;
+}
+
+#comments {
+  border: 4px solid #add8e6;
+  border-radius: 8px;
+  width: 96.5%;
+  height: 8em;
+}
+
+#submit {
+  padding-left: 25px;
+  font-size: large;
+  font-weight: bold;
 }
 
 @media screen and (max-width: 715px) {
