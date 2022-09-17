@@ -9,7 +9,7 @@
     <title>Enquire page </title>
 </head>
 <body>
-    <div id="taskbar">
+    <nav id="taskbar">
         <a href="index.html" id="logo-container">
           <img src="images/logo.png" alt="Nameless" id="logo" />
         </a>
@@ -35,9 +35,8 @@
             Enhancements
           </button>
         </div>
-      </div>
+    </nav>
 
-    <section id="page-box">
     <section id="section1">
         <h1 id="form-title">Customer Enquiry Form</h1>
 
@@ -79,14 +78,14 @@
                 <br />
                 <label for="state">State</label>
                 <select name="state" id="state">
-                    <option value="8">VIC</option>
-                    <option value="7">NSW</option>
-                    <option value="6">QLD</option>
-                    <option value="5">NT</option>
-                    <option value="4">WA</option>
-                    <option value="3">SA</option>
-                    <option value="2">TAS</option>
-                    <option value="1">ACT</option>
+                    <option value="VIC">VIC</option>
+                    <option value="NSW">NSW</option>
+                    <option value="QLD">QLD</option>
+                    <option value="NT">NT</option>
+                    <option value="WA">WA</option>
+                    <option value="SA">SA</option>
+                    <option value="TAS">TAS</option>
+                    <option value="ACT">ACT</option>
                 </select>
                 <label for="postcode">Postcode</label>
                 <input type="text" name="postcode" id="postcode" maxlength="4" size="10" required="required" pattern="[0-9]+">
@@ -94,22 +93,22 @@
 
             <fieldset id="phone_field">
                 <legend><label for="Phone">Phone number</label></legend>
-                <input name="phone" id="Phone" type="text" maxlength="10" required="required" pattern="[0-9]+" placeholder="e.g 000-000-0000"></p>
+                <input name="phone" id="Phone" type="text" maxlength="10" required="required" pattern="[0-9]+" placeholder="e.g 0123456789">
             </fieldset>
 
             <fieldset id="pref_contact">
                 <legend id="pref_contact_legend">Preferred contact</legend>
 
                 <label class="choose_contact">Email
-                    <input required="required" type="radio" name="contact" value="1">
+                    <input required="required" type="radio" name="contact" value="Email">
                     <span class="checkmark"></span>
                 </label>
                 <label class="choose_contact">Post
-                    <input required="required" type="radio" name="contact" value="2">
+                    <input required="required" type="radio" name="contact" value="Post">
                     <span class="checkmark"></span>
                 </label>
                 <label class="choose_contact">Phone
-                    <input required="required" type="radio" name="contact" value="3">
+                    <input required="required" type="radio" name="contact" value="Phone">
                     <span class="checkmark"></span>
                 </label>
             </fieldset>
@@ -121,14 +120,14 @@
                 <legend><label for="product">Product</label></legend>
                 <select name="product" id="product">
                     <option value="0">Choose an option</option>
-                    <option value="1">15$/7days</option>
-                    <option value="2">25$/14days</option>
-                    <option value="3">35$/21days</option>
-                    <option value="4">45$/28days</option>
-                    <option value="5">55$/28days</option>
-                    <option value="6">65$/28days</option>
-                    <option value="7">155$/28days</option>
-                    <option value="8">1000$/365days</option>
+                    <option value="MERCURY Plan">Mercury</option>
+                    <option value="VENUS Plan">Venus</option>
+                    <option value="EARTH Plan">Earth</option>
+                    <option value="MARS Plan">Mars</option>
+                    <option value="JUPITER Plan">Jupiter</option>
+                    <option value="SATURN Plan">Saturn</option>
+                    <option value="URANUS Plan">Uranus</option>
+                    <option value="NEPTUNE Plan">Neptune</option>
                 </select>
             </fieldset>
 
@@ -136,34 +135,34 @@
                 <legend>Product feature:</legend>
 
                 <label class="choose_feature">Data
-                    <input type="checkbox" name="feature" value="1">
+                    <input type="checkbox" name="feature" value="Data">
                     <span class="checksquare"></span>
                 </label>
 
 
                 <label class="choose_feature">Infinite Data
-                    <input type="checkbox" name="feature" value="2">
+                    <input type="checkbox" name="feature" value="Infinite Data">
                     <span class="checksquare"></span>
                 </label>
 
 
                 <label class="choose_feature">Unlimited Call&Text
-                    <input type="checkbox" name="feature" value="3">
+                    <input type="checkbox" name="feature" value="Unlimited Call&Text">
                     <span class="checksquare"></span>
                 </label>
 
                 <label class="choose_feature">Data bank
-                    <input type="checkbox" name="feature" value="4">
+                    <input type="checkbox" name="feature" value="Data bank">
                     <span class="checksquare"></span>
                 </label>
 
                 <label class="choose_feature">International talk zone 1
-                    <input type="checkbox" name="feature" value="5">
+                    <input type="checkbox" name="feature" value="International Talk Zone 1">
                     <span class="checksquare"></span>
                 </label>
 
                 <label class="choose_feature">International talk zone 2
-                    <input type="checkbox" name="feature" value="6">
+                    <input type="checkbox" name="feature" value="International Talk Zone 2">
                     <span class="checksquare"></span>
                 </label>
             </fieldset>
@@ -181,8 +180,7 @@
             <br>
         </form>
     </section>
-    </section>
-    <div id="footer">
+    <footer id="footer">
         <p class="footer-content">&copy; Copyright 2022 - Nameless <br> <br> </p>
         <p class="footer-content">Team member:</p>
         <ul class="footer-content">
@@ -192,5 +190,5 @@
           <li> Trung Kien Nguyen</li>
           <li> Minh Thanh Dang</li>
         </ul>
-      </div>
+    </footer>
 </body>
