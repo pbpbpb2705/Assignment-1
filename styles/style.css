@@ -226,6 +226,10 @@ body {
   margin-left: 20px;
 }
 
+#footer ul li {
+  list-style: none;
+}
+
 @media screen and (max-width: 800px) {
 
   .btn-2 {
