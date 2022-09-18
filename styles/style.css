@@ -5,10 +5,6 @@ last modified: 16/9/2022
 description: Assignment 1 Styling
 */
 
-/*
-Styling for index.html
-*/
-
 /* Styling for body and font */
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
 * {
@@ -20,6 +16,10 @@ body {
   margin: 0;
   font-style: normal;
 }
+
+/*
+Styling for index.html
+*/
 
 /* Navigation bar button styling */
 .btn-2 {
@@ -70,10 +70,29 @@ body {
 .slider {
   display: flex;
   flex-direction: row;
+  width: 30vw;
+  height: fit-content;
+  margin: 10vh 10vw 0 10vw;
+  overflow: hidden;
 }
 
-.slider li {
-  list-style-type: none;
+.slider img {
+  width: 25vw;
+  margin: 2.5vw;
+  border-radius: 15px;
+}
+
+.slider-radio {
+  display: none;
+}
+
+.radio-container {
+  margin-bottom: 10vh;
+}
+
+.radio-container label {
+  border: 5px solid #f0f8ff;
+  border-radius: 50%;
 }
 
 /* Styling for each slider in scrollbar on the left*/
@@ -704,6 +723,13 @@ Styling for enquire.html
     font-family: 'Rubik', sans-serif;
 }
 
+/* Styling for title of the form */
+#form-title {
+  text-align: center;
+  font-size: 30px;
+  color: #fe6262;
+}
+
 /* css for title */
 #title {
     font-family: 'Rubik', sans-serif;
@@ -720,7 +746,7 @@ Styling for enquire.html
     max-width: 940px;
     width: 70%;
     height: 50%;
-    border: 2px solid #add8e6;
+    background-color: #add8e6;
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 5%;
@@ -982,4 +1008,12 @@ legend{
         margin-left: calc((1vw - 500px)/2);
     }
 }
+
+/*
+Styling for enhancement.html
+*/
+
+
+
+
 
