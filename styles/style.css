@@ -9,6 +9,7 @@ description: Assignment 1 Styling
 Styling for index.html
 */
 
+/* Styling for body and font */
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
 * {
   font-family: "Rubik", sans-serif;
@@ -20,6 +21,7 @@ body {
   font-style: normal;
 }
 
+/* Navigation bar button styling */
 .btn-2 {
   margin-left: 30px;
   border: 0;
@@ -31,16 +33,19 @@ body {
   font-size: 18px;
 }
 
+/* Styling for button in navigation bar when hover*/
 .btn-2:hover {
   transition: ease-in-out 0.3s;
   color: gray;
   cursor: pointer;
 }
 
+/* Image in scrollbar on the left */
 .product-image {
   width: 90%;
 }
 
+/* Button in scrollbar on the left */
 .btn-1 {
   border-radius: 10px;
   background-color: #de4a4d;
@@ -53,6 +58,7 @@ body {
   margin-bottom: 10px;
 }
 
+/* Styling for the button in scrollbar on the left (when hover)*/
 .btn-1:hover {
   transition: ease-in-out 0.3s;
   color: #de4a4d;
@@ -60,6 +66,7 @@ body {
   cursor: pointer;
 }
 
+/* Slideshow in each item in scrollbar on the left */
 .slider {
   display: flex;
   flex-direction: row;
@@ -69,6 +76,14 @@ body {
   list-style-type: none;
 }
 
+/* Styling for each slider in scrollbar on the left*/
+.scrollview-item {
+  height: 40%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Navigation button on articles */
 .article-button {
   border: 0;
   border-radius: 10px;
@@ -82,6 +97,7 @@ body {
   margin: 1% 35%;
 }
 
+/* Styling for navigation button on articles when hover*/
 .article-button:hover {
   transition: ease-in-out 0.3s;
   color: #de4a4d;
@@ -89,6 +105,7 @@ body {
   cursor: pointer;
 }
 
+/* Styling for articles */
 .article {
   height: 50%;
   width: 100%;
@@ -103,6 +120,7 @@ body {
   margin: 1% auto ;
 }
 
+/* Styling for item in scrollbar on the left */
 .flex-center {
   display: flex;
   flex-direction: column;
@@ -110,11 +128,13 @@ body {
   justify-content: center;
 }
 
+/* Styling for footer */
 .footer-content {
   color: white;
   margin-top: 0;
 }
 
+/* Styling for navigation bar */
 #taskbar {
   position: sticky;
   top: 0;
@@ -127,6 +147,7 @@ body {
   background-color: black;
 }
 
+/* Styling for the logo on navigation bar */
 #logo-container {
   display: flex;
   align-items: center;
@@ -143,9 +164,9 @@ body {
   background-repeat: no-repeat;
 }
 
+/* Styling for button container on navigation bar */
 #taskbar-icon {
   margin-right: 20px;
-  color: #0057b7;
   width: 50%;
   height: 100%;
   display: flex;
@@ -153,6 +174,7 @@ body {
   align-items: center;
 }
 
+/* Styling for banner */
 #banner {
   display: flex;
   flex-direction: row;
@@ -160,16 +182,17 @@ body {
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: #0057b7;
   transition: all 0.5s;
 }
 
+/* Styling for the container that holds the body */
 #body-container {
   display: flex;
   flex-direction: row;
   height: 100vh;
 }
 
+/* Styling for scrollbar on the left*/
 #products-scrollview {
   border-right: 1px solid black;
   display: flex;
@@ -184,12 +207,7 @@ body {
   padding-right: 0.5%;
 }
 
-#products-scrollview div {
-  height: fit-content;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
+/* Styling for article containter in the body part */
 #articles {
   width: 80%;
   height: 100%;
@@ -201,16 +219,19 @@ body {
   align-items: center;
 }
 
+/* Styling for the first article */
 #article-1 {
   background-color: transparent;
   color: black;
 }
 
+/* Styling for the second article */
 #article-2 {
   background-color: #db9191;
   color: white;
 }
 
+/* Styling for footer */
 #footer {
   margin: 0;
   width: 100%;
@@ -230,6 +251,7 @@ body {
   list-style: none;
 }
 
+/* Responsive styling for index.html */
 @media screen and (max-width: 800px) {
 
   .btn-2 {
@@ -251,12 +273,14 @@ body {
 /*
 Styling for about.html
 */
-
+/* Tags are container for each member's information */
+/* Styling for personal information container in each tag */
 figure {
   float: right;
   margin-right: 5%;
 }
 
+/* Styling for tag*/
 .tag {
   width: 100%;
   height: 85vh;
@@ -265,31 +289,37 @@ figure {
   padding-bottom: 20px;
 }
 
+/* Styling for description title in tag */
 .description-title {
   font-weight: bold;
   margin-left: 5%;
 }
 
+/* Styling for desctiption content in tag */
 .description-item {
   margin-left: 5%;
 }
 
+/* Styling for the email link*/
 .email-link {
   text-decoration: none;
   color: black;
 }
 
+/* Styling for the image in figure (Personal image) */
 .tag-image {
   width: 15vw;
   border: double 3px black;
 }
 
+/* Styling for the description container in tag */
 .tag-text {
   width: 80%;
   font-size: 18px;
   margin-right: 20px;
 }
 
+/* Styling for the timetable in each tag */
 .table-1 {
   border: 3px solid;
   border-collapse: collapse;
@@ -298,6 +328,7 @@ figure {
   margin: auto;
 }
 
+/* Styling for the timetable's header in each tag */
 .table-1 th {
   background-color: black;
   color: white;
@@ -305,10 +336,12 @@ figure {
   width: 10vw;
 }
 
+/* Styling for the timetable's cell in each tag */
 .table-1 td {
   width: 10vw;
 }
 
+/* Styling for each subject's cell */
 .cos10004 {
   background-color: #6efceb;
   color: #ffffff;
@@ -327,14 +360,17 @@ figure {
   color: #ffffff;
 }
 
+/* Styling for empty cells in timetable */
 .empty-cell {
   background-color: #ffffff;
 }
 
+/* Styling for the last tag*/
 #tag-5 {
   border: 0;
 }
 
+/* Responsive design for about.html */
 @media screen and (max-width: 1000px) {
   .tag {
     flex-direction: column;
@@ -349,6 +385,7 @@ figure {
 Styling for products.html
 */
 
+/* Styling for aside part of container 2 (ctn_2)*/
 aside {
   width: 25%;
   float: right;
@@ -357,7 +394,7 @@ aside {
   padding: 5px;
 }
 
-
+/* Styling for the card container*/
 .flex-container1 {
   display: flex;
   flex-direction: column;
@@ -367,6 +404,7 @@ aside {
   height: fit-content;
 }
 
+/* Styling for each row in card container (Contains 2 cards each) */
 .row {
   display: flex;
   flex-direction: row;
@@ -376,6 +414,7 @@ aside {
   height: fit-content;
 }
 
+/* Styling for the card */
 .card {
   border: 1px solid white;
   background-color: white;
@@ -386,6 +425,7 @@ aside {
   border-radius: 30px;
 }
 
+/* Styling for the image in each card*/
 .card-img {
   height: auto;
   width: 370px;
@@ -393,17 +433,17 @@ aside {
   transition: all 0.5s ease-in-out;
 }
 
+/* Styling for the image in each card when hover*/
 .card-img:hover {
   transform: scale(1.2)
 }
-#background {
-  background-color: white;
-}
 
+/* Styling for text size in card container*/
 .flex-container1 > div {
   font-size: 30px;
 }
 
+/* Styling for the dropdown button in each card*/
 .dropdown-button {
   background-color: #db9191;
   color: white;
@@ -412,6 +452,7 @@ aside {
   padding: 5px;
 }
 
+/* Styling for the dropdown button when hover*/
 .dropdown-button:hover {
   color: #db9191;
   background-color: #f5f5f5;
@@ -422,44 +463,27 @@ aside {
   visibility: visible;
 }
 
+/* Styling for the dropdown content (appears when the dropdown button is hovered)*/
 .dropdown-content {
   height: 0;
   visibility: hidden;
 }
 
-#banner {
-  display: flex;
-  flex-direction: row;
-  overflow-x: auto;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background-color: #0057b7;
-  transition: all 0.5s;
-}
-
-#banner img {
-  width: 100%;
-}
-
+/* Styling for the title of the products website*/
 #product-title {
   text-align: center;
   text-transform: uppercase;
   animation: product-title 3s infinite;
 }
 
+/* Keyframe for the title of the products website*/
 @keyframes product-title {
   0%,80% {
     transform: rotateY(360deg);
   }
 }
 
-#description_company {
-  background-color: #f5f5f5;
-  width: 100%;
-  height: 100%;
-}
-
+/* Styling for the containers (ctn_1, ctn_2, ctn_3, ctn_4, ctn_5) in products page*/
 #ctn_1 {
   height: 50%;
   background-color: #ffcdcd;
@@ -467,6 +491,7 @@ aside {
   font-weight: bolder;
   padding: 0.1%;
 }
+
 
 #ctn_2 {
   display: flex;
@@ -501,6 +526,8 @@ aside {
   margin-bottom: 5%;
   margin-top: 5%;
 }
+
+/* Keyframe for animation of the first icon in ctn_4*/
 @keyframes actn_4_1 {
   0% {
     transform: translateX(450%);
@@ -521,6 +548,8 @@ aside {
     transform: translateX(-450%);
   }
 }
+
+/* Keyframe for animation of the second icon in ctn_4*/
 @keyframes actn_4_2 {
   0% {
     transform: translateX(450%);
@@ -541,6 +570,8 @@ aside {
     transform: translateX(-450%);
   }
 }
+
+/* Keyframe for animation of the third icon in ctn_4*/
 @keyframes actn_4_3 {
   0% {
     transform: translateX(450%);
@@ -561,10 +592,13 @@ aside {
     transform: translateX(-450%);
   }
 }
+
+/* Styling for the title description*/
 #description-title {
   text-align: center;
 }
 
+/* Styling for the first item in ctn_4*/
 #ctn_4_1 {
   width: 15%;
   height: auto;
@@ -572,6 +606,7 @@ aside {
   animation: actn_4_1 3s linear infinite;
 }
 
+/* Styling for the second item in ctn_4*/
 #ctn_4_2 {
   width: 15%;
   height: auto;
@@ -579,6 +614,7 @@ aside {
   animation: actn_4_2 3s linear infinite;
 }
 
+/* Styling for the third item in ctn_4*/
 #ctn_4_3 {
   width: 15%;
   height: auto;
@@ -586,15 +622,18 @@ aside {
   animation: actn_4_3 3s linear infinite;
 }
 
+/* Styling for the icon in each item in ctn_4*/
 .description-icon {
   width: 50px;
   height: 50px;
 }
 
+/* Styling for the header of products table*/
 #table-header {
   font-weight: 400;
 }
 
+/* Styling for the title part of each card */
 .card-title {
   color: #da0106;
   font-weight: 1000;
@@ -602,12 +641,14 @@ aside {
   text-align: center;
 }
 
+/* Styling for the content part of each card */
 .card-description {
   font-size: large;
   padding-left: 30px;
   padding-right: 20px;
 }
 
+/* Styling for each card */
 .card-border {
   margin: 100px;
   background-color: white;
@@ -617,6 +658,7 @@ aside {
   transition: all 1s ease-in-out;
 }
 
+/* Styling for the products table */
 .table-2 {
   border-collapse: collapse;
   width: 80%;
@@ -624,12 +666,14 @@ aside {
   margin: 30px auto;
 }
 
+/* Styling for the headers in the product table */
 .table-2 th {
   background-color: #db9191;
   border: 2px solid;
   width: 10vw;
 }
 
+/* Styling for the cells in the products table */
 .table-2 td {
   border: 2px solid;
   border-collapse: collapse;
@@ -638,12 +682,14 @@ aside {
   background-color: #faf8d4;
 }
 
+/* Styling for the text in ctn_2 */
 .para_0 {
   text-align: center;
   font-size: 120%;
   width: 70%
 }
 
+/* Styling for the text in ctn_4_2*/
 .para_1 {
   font-weight: bold;
   font-size: larger;
@@ -653,261 +699,287 @@ aside {
 Styling for enquire.html
 */
 
+/*all filter*/
+* {
+    font-family: 'Rubik', sans-serif;
+}
+
+/* css for title */
+#title {
+    font-family: 'Rubik', sans-serif;
+    font-size: 2.3em;
+    font-weight: 900;
+    color: blue;
+    text-align: center;
+}
+
+/* design the form */
+#section1 {
+    display: inline-block;
+    min-width: 500px;
+    max-width: 940px;
+    width: 70%;
+    height: 50%;
+    border: 2px solid #add8e6;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 5%;
+    margin-bottom: 7%;
+    border-radius: 80px;
+    border-width: 0.8em;
+}
+
+/* design input box */
 input {
-  border-radius: 6px;
-  border-color: #add8e6;
-  height: 2em;
-  box-shadow: -3px 3px #add8e6;
-  font-weight: bold;
-  padding-left: 6px;
+    border-radius: 6px;
+    border-color: #add8e6;
+    height: 2em;
+    box-shadow: -3px 3px #add8e6;
+    font-weight: bold;
+    padding-left: 6px;
 }
 
+/* design the fieldset margin, border */
 fieldset {
-  border-style: none;
-  padding-left: 1%;
-  margin-left: 3%;
+    border-style: none;
+    padding-left: 1%;
+    margin-left: 3%;
 }
 
-legend {
-  font-size: 120%;
-  font-weight: bold;
-  color: #db9191;
-  line-height: 9px;
+/* desgint the legend text*/
+legend{
+    font-size: 120%;
+    font-weight: bold;
+    color: blue;
+    line-height: 9px;
+}
+
+/* name field design */
+#first {
+    float: left;
+}
+
+#last {
+    display: inline-block;
+    margin-left: 20px;
 }
 
 .name_label {
-  font-size: 80%;
+    font-size: 80%;
+}
+
+ /*email box*/
+#email {
+    width: 80%;
+}
+
+/* address box*/
+#address {
+    position: relative;
+    display: block;
+    float: left;
+    border: 4px solid #add8e6;
+    max-width: 45%;
+    min-width: 45%;
+    margin-left: 4%;
+    line-height: 50px;
+}
+
+/* phone_field */
+#phone_field {
+    display: block;
+    float: left;
+}
+
+/* prefered contact block*/
+#pref_contact {
+    display: block;
+    clear: right;
+    float: left;
+    border: 4px solid #add8e6;
+    width: 34%;
+    min-width: 19%;
+}
+
+/*require line*/
+#require {
+    padding-left: 40px;
+}
+
+/*proucts block */
+#products {
+    border: 4px solid #add8e6;
+    display: block;
+    clear: both;
+    float: left;
+    width: 45%;
+    min-width: 26%;
+    margin-top: 15px;
+    margin-left: 4%;
+    line-height: 40px;
+}
+
+/* feature block*/
+#feature_field {
+    position: relative;
+    display: block;
+    top: 18px;
+
+    padding-left: 3%;
+
+}
+
+/* comment field*/
+#comments_field {
+    margin-top: 15px;
+}
+
+#comments {
+    border: 4px solid #add8e6;
+    border-radius: 8px;
+    width: 96.5%;
+    height: 8em;
+}
+
+
+/* submit button */
+#submit {
+    padding-left: 25px;
+    font-size: large;
+    font-weight: bold;
 }
 
 /* Create custom radio buttons */
 .choose_contact {
-  display: block;
-  position: relative;
-  padding-left: 25px;
-  margin-top: 6px;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    margin-top: 6px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .choose_contact input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
 }
 
 .checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 18px;
-  width: 18px;
-  background-color: #eee;
-  border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: #eee;
+    border-radius: 50%;
 }
 
 /*Make the button grey when hover, blue when checked with dot in the middle */
 .choose_contact:hover input ~ .checkmark {
-  background-color: #ccc;
+    background-color: #ccc;
 }
 
 .choose_contact input:checked ~ .checkmark {
-  background-color: #ef9191;
+    background-color: #2196F3;
 }
 
 .checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
+    content: "";
+    position: absolute;
+    display: none;
 }
 
 .choose_contact input:checked ~ .checkmark:after {
-  display: block;
+    display: block;
 }
 
 .choose_contact .checkmark:after {
-  top: 6px;
-  left: 6px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: white;
+    top: 6px;
+    left: 6px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: white;
 }
 
 /* Create custom checkbox buttons */
 .choose_feature {
-  display: block;
-  position: relative;
-  padding-left: 25px;
-  margin-bottom: 6px;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .choose_feature input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
 }
 
 .checksquare {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 18px;
-  width: 18px;
-  background-color: #eee;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: #eee;
 }
 
 /*Make the button grey when hover, blue when checked with tick in the middle*/
 .choose_feature:hover input ~ .checksquare {
-  background-color: #ccc;
+    background-color: #ccc;
 }
 
+
 .choose_feature input:checked ~ .checksquare {
-  background-color: #ef9191;
+    background-color: #2196F3;
 }
 
 .checksquare:after {
-  content: "";
-  position: absolute;
-  display: none;
+    content: "";
+    position: absolute;
+    display: none;
 }
 
 .choose_feature input:checked ~ .checksquare:after {
-  display: block;
+    display: block;
 }
 
 .choose_feature .checksquare:after {
-  left: 5px;
-  top: 0px;
-  width: 6px;
-  height: 12px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
+    left: 5px;
+    top: 0px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
-#form-title {
-  font-size: 2.3em;
-  font-weight: 900;
-  color: #db9191;
-  text-align: center;
-}
-
-#section1 {
-  display: inline-block;
-  min-width: 500px;
-  max-width: 940px;
-  width: 70%;
-  height: 50%;
-  background-color: #add8e6;
-  margin-left: 15%;
-  margin-right: 15%;
-  margin-top: 5%;
-  margin-bottom: 7%;
-  border-radius: 80px;
-  border-width: 0.8em;
-}
-
-#first {
-  float: left;
-}
-
-#last {
-  display: inline-block;
-  margin-left: 20px;
-}
-
-#email {
-  width: 80%;
-}
-
-#address {
-  position: relative;
-  display: block;
-  float: left;
-  border: 4px solid #add8e6;
-  max-width: 45%;
-  min-width: 45%;
-  margin-left: 4%;
-  line-height: 50px;
-}
-
-#phone_field {
-  display: block;
-  float: left;
-}
-
-#pref_contact {
-  display: block;
-  clear: right;
-  float: left;
-  border: 4px solid #add8e6;
-  width: 34%;
-  min-width: 19%;
-}
-
-#require {
-  padding-left: 40px;
-}
-
-#products {
-  border: 4px solid #add8e6;
-  display: block;
-  clear: both;
-  float: left;
-  width: 45%;
-  min-width: 26%;
-  margin-top: 15px;
-  margin-left: 4%;
-  line-height: 40px;
-}
-
-#feature_field {
-  position: relative;
-  display: block;
-  top: 18px;
-  padding-left: 3%;
-  width: fit-content;
-}
-
-#comments_field {
-  margin-top: 15px;
-}
-
-#comments {
-  border: 4px solid #add8e6;
-  border-radius: 8px;
-  width: 96.5%;
-  height: 8em;
-}
-
-#submit {
-  padding-left: 25px;
-  font-size: large;
-  font-weight: bold;
-}
-
+/* responsive design for small window */
 @media screen and (max-width: 715px) {
-  #section1 {
-    width: 96%;
-    margin-left: auto;
-    margin-right: auto;
-  }
+    #section1 {
+        width: 96%;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-  #page-box {
-    margin-left: calc((1vw - 500px) / 2);
-  }
+    #page-box {
+        margin-left: calc((1vw - 500px)/2);
+    }
 }
+
