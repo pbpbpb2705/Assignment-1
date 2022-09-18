@@ -293,9 +293,29 @@ figure {
 }
 
 .table-1 td {
-  background-color: #ffffff;
-  border: 2px solid;
   width: 10vw;
+}
+
+.cos10004 {
+  background-color: #6efceb;
+  color: #ffffff;
+}
+
+.tne10006 {
+  background-color: #adff2f;
+}
+
+.cos10009 {
+  background-color: #dda0dd;
+}
+
+.cos10026 {
+  background-color: #de4a4d;
+  color: #ffffff;
+}
+
+.empty-cell {
+  background-color: #ffffff;
 }
 
 #tag-5 {
@@ -357,7 +377,9 @@ aside {
   height: auto;
   width: 370px;
   border-radius: 15px;
+  transition: all 0.5s ease-in-out;
 }
+
 .card-img:hover {
   transform: scale(1.2)
 }
@@ -427,8 +449,8 @@ aside {
 
 #ctn_1 {
   height: 50%;
-  background-color: rgb(255, 205, 205);
-  color: rgb(56, 0, 0);
+  background-color: #ffcdcd;
+  color: #380000;
   font-weight: bolder;
   padding: 0.1%;
 }
@@ -443,7 +465,7 @@ aside {
 #ctn_5 {
   width: 90%;
   height: auto;
-  background-color: rgb(255, 255, 255);
+  background-color: #ffffff;
   padding-left: 5%;
   padding-right: 5%;
   padding-top: 2%;
@@ -453,7 +475,7 @@ aside {
 #ctn_3 {
   width: 100%;
   height: fit-content;
-  background-color: rgb(255, 205, 205);
+  background-color: #ffcdcd;
   padding-top: 1%;
   padding-bottom: 1%;
 }
