@@ -60,6 +60,15 @@ body {
   cursor: pointer;
 }
 
+.slider {
+  display: flex;
+  flex-direction: row;
+}
+
+.slider li {
+  list-style-type: none;
+}
+
 .article-button {
   border: 0;
   border-radius: 10px;
@@ -622,6 +631,7 @@ aside {
   border-collapse: collapse;
   width: 10vw;
   text-align: center;
+  background-color: #faf8d4;
 }
 
 .para_0 {
