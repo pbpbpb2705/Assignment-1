@@ -75,16 +75,19 @@ Styling for index.html
   transition: all 0.5s;
 }
 
+/*Styling for images in the slider*/
 .slider img {
   width: 22.5%;
   margin-right: 1.25%;
   margin-left: 1.25%;
 }
 
+/*Make the radio input disappear*/
 .slider-radio {
   display: none;
 }
 
+/*Styling for the container of the radio input*/
 .radio-container {
   display: flex;
   flex-direction: row;
@@ -93,6 +96,7 @@ Styling for index.html
   margin-top: 5%;
 }
 
+/* Styling for label represents the radio input*/
 .radio-container label {
   display: inline-block;
   height: 2vh;
@@ -105,10 +109,12 @@ Styling for index.html
   transition: 0.2s ease-in-out;
 }
 
+/* Styling for label represents the radio input (when hover)*/
 .radio-container label:hover {
   background-color: #4b4b4b;
 }
 
+/*Implement changes when different radio button is clicked*/
 #radio-1:checked ~ .slider {
   margin-left: 0%;
 }
@@ -125,15 +131,10 @@ Styling for index.html
   margin-left: -300%;
 }
 
-#radio-5:checked ~ .slider {
-  margin-left: -400%;
-}
-
 #radio-1:checked ~ .radio-container > label:nth-child(1),
 #radio-2:checked ~ .radio-container > label:nth-child(2),
 #radio-3:checked ~ .radio-container > label:nth-child(3),
-#radio-4:checked ~ .radio-container > label:nth-child(4),
-#radio-5:checked ~ .radio-container > label:nth-child(5) {
+#radio-4:checked ~ .radio-container > label:nth-child(4) {
   background-color: #000000;
 }
 
@@ -1049,10 +1050,12 @@ legend {
 Styling for enhancement.html
 */
 
+/*Styling for enhancement list*/
 .enhancement-list {
   margin-left: 20vw;
 }
 
+/*Styling for enhancement items in enhancement list*/
 .enhancement-item {
   list-style: none;
   margin-bottom: 20px;
