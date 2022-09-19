@@ -178,6 +178,13 @@ Styling for index.html
   text-align: center;
 }
 
+.article a {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #da0106;
+  padding: 5px;
+}
+
 .article-image {
   height: 50%;
 }
@@ -290,6 +297,7 @@ Styling for index.html
   width: 80%;
 }
 
+
 /* Styling for the first article */
 #article-1 {
   background-color: transparent;
@@ -353,7 +361,6 @@ figure {
 .tag {
   width: 100%;
   height: 85vh;
-  flex-direction: column;
   border-bottom: solid 1px black;
   padding-bottom: 20px;
 }
