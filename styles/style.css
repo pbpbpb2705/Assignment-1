@@ -181,7 +181,8 @@ Styling for index.html
 .article a {
   text-decoration: none;
   color: #ffffff;
-  background-color: #da0106;
+  border-radius: 30px;
+  background-color: #da8f03;
   padding: 5px;
 }
 
