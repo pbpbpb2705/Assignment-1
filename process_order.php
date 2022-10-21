@@ -22,59 +22,61 @@
 
     $error_msg = "";
 
-    //First name validation
+    //Data validation
     $first_name = cleanseInput($_POST["first_name"]);
+    $last_name = cleanseInput($_POST["last_name"]);
+    $email = cleanseInput($_POST["email"]);
+    $street = cleanseInput($_POST["street"]);
+    $postcode = cleanseInput($_POST["postcode"]);
+    $phone = cleanseInput($_POST["phone"]);
+    $preferred_contact = cleanseInput($_POST["contact"]);
+    $product = cleanseInput($_POST["product"]);
     if (!preg_match("/^[a-zA-Z]{1,25}$/", $first_name)) {
-        $error_msg .= "<p class=''>First name must contains only alphabetical characters and in between 1-25 characters length.</p>\n";
+        $error_msg .= "<p class='error-message'>First name must contains only alphabetical characters and in between 1-25 characters length.</p>\n";
     }
 
     //Last name validation
-    $last_name = cleanseInput($_POST["last_name"]);
+
     if (!preg_match("/^[a-zA-Z]{1,25}$/", $last_name)) {
-        $error_msg .= "<p class=''>Last name must contains only alphabetical characters and in between 1-25 characters length.</p>\n";
+        $error_msg .= "<p class='error-message'>Last name must contains only alphabetical characters and in between 1-25 characters length.</p>\n";
     }
 
     //Email validation
-    $email = cleanseInput($_POST["email"]);
     if (!preg_match("/\S+@\S+\.\S+/", $email)) {
-        $error_msg .= "<p class=''>Your email must be in the format of email_name@service_provider_name.com</p>\n";
+        $error_msg .= "<p class='error-message'>Your email must be in the format of email_name@service_provider_name.com</p>\n";
     }
 
     //Street validation
-    $street = cleanseInput($_POST["street"]);
     if (!preg_match("/^[a-zA-Z]{1,20}$/", $street)) {
-        $error_msg .= "<p class=''>Your street name must contains only alphabetical characters and in between 1-20 characters length.</p>\n";
+        $error_msg .= "<p class='error-message'>Your street name must contains only alphabetical characters and in between 1-20 characters length.</p>\n";
     }
 
     //Suburb validation
     $suburb = cleanseInput($_POST["suburb"]);
     if (!preg_match("/^[a-zA-Z]{1,20}$/", $suburb)) {
-        $error_msg .= "<p class=''>Your suburb must contains only alphabetical characters and in between 1-20 characters length.</p>\n";
+        $error_msg .= "<p class='error-message'>Your suburb must contains only alphabetical characters and in between 1-20 characters length.</p>\n";
     }
 
     //State validation
     $state = cleanseInput($_POST["state"]);
     if ($state == "none") {
-        $error_msg .= "<p class=''>You must select your state.</p>\n";
+        $error_msg .= "<p class='error-message'>You must select your state.</p>\n";
     }
 
     //Postcode validation
-    $postcode = cleanseInput($_POST["postcode"]);
+
     if (!preg_match("/^\d{4}$/", $postcode)) {
-        $error_msg .= "<p class=''>Your postcode must be a 4-digit number.</p>\n";
+        $error_msg .= "<p class='error-message'>Your postcode must be a 4-digit number.</p>\n";
     }
 
     //Phone number validation
-    $phone = cleanseInput($_POST["phone"]);
     if (!preg_match("/^\d{8,12}$/", $phone)) {
-        $error_msg .= "<p class=''>Your phone number must contains only numbers and in between 8-12 digits length .</p>\n";
+        $error_msg .= "<p class='error-message'>Your phone number must contains only numbers and in between 8-12 digits length .</p>\n";
     }
 
-    $preferred_contact = cleanseInput($_POST["contact"]);
 
-    $product = cleanseInput($_POST["product"]);
     if ($product == "0") {
-        $error_msg .= "<p class=''>Your must choose a plan .</p>\n";
+        $error_msg .= "<p class='error-message'>Your must choose a plan .</p>\n";
     } else {
         switch ($product) {
             case "MERCURY Plan":
@@ -99,69 +101,76 @@
     //Enquiry validation
     $comments = cleanseInput($_POST["comments"]);
     if ($comments == "") {
-        $error_msg .= "<p class=''>You must select your enquiry.</p>\n";
+        $error_msg .= "<p class='error-message'>You must select your enquiry.</p>\n";
     }
 
     //Card type validation
-    $card_type = cleanseInput($_POST["card_type"]);            //sanitise input
+    $card_type = cleanseInput($_POST["card_type"]);
     if ($cardType == "none") {                                //if state has not been selected
-        $error_msg .= "<p class=''>You must select your card type.</p>\n";
+        $error_msg .= "<p class='error-message'>You must select your card type.</p>\n";
     }
 
     //Card name validation
-    $card_name = cleanseInput($_POST["card_name"]);            //sanitise input
+    $card_name = cleanseInput($_POST["card_name"]);
     if ($cardName == "") {
-        $error_msg .= "<p class=''>You must enter your name on card.</p>\n";
+        $error_msg .= "<p class='error-message'>You must enter your name on card.</p>\n";
     } else if (!preg_match("/^[a-zA-Z ]{1,40}$/", $cardName)) {
-        $error_msg .= "<p class=''>Card name must contains only alphabetical characters and spaces and cannot exceed 40 characters length.</p>\n";
+        $error_msg .= "<p class='error-message'>Card name must contains only alphabetical characters and spaces and cannot exceed 40 characters length.</p>\n";
     }
 
     //Card number validation
-    $card_number = cleanseInput($_POST["card_number"]);        //sanitise input
-    if ($cardNumber == "") {                                //if state has not been selected
-        $error_msg .= "<p class=''>You must enter your card number.</p>\n";
+    $card_number = cleanseInput($_POST["card_number"]);
+    if ($card_number == "") {
+        $error_msg .= "<p class='error-message'>You must enter your card number.</p>\n";
     } else {
         switch ($card_type) {
             case "visa":                                                                                             //post code check for visa type
-                if ($cardNumber[0] != "4") {                                                                            //check if first number is 4
-                    $error_msg .= "<p class=''>Visa card number must start with 4.</p>\n";
-                } else if (!preg_match("/^\d{16}$/", $cardNumber)) {                                                    //check if length is 16 and only contains numbers
-                    $error_msg .= "<p class=''>Visa card number must be 16 digits and contains numbers only.</p>\n";
+                if ($card_number[0] != "4") {                                                                            //check if first number is 4
+                    $error_msg .= "<p class='error-message'>Visa card number must start with 4.</p>\n";
+                } else if (!preg_match("/^\d{16}$/", $card_number)) {                                                    //check if length is 16 and only contains numbers
+                    $error_msg .= "<p class='error-message'>Visa card number must be 16 digits and contains numbers only.</p>\n";
                 }
                 break;
             case "master":                                                                                             //post code check for mastercard type
-                if (!($card_number[0] == "5" && ($cardNumber[1] >= 1 && $cardNumber[1] <= 5))) {                        //check if first 2 numbers are 51->55
-                    $error_msg .= "<p class=''>MasterCard must start with digits \"51\" through to \"55\".</p>\n";
-                } else if (!preg_match("/^\d{16}$/", $cardNumber)) {                                                    //check if length is 16 and only contains numbers
-                    $error_msg .= "<p class=''>MasterCard number must be 16 digits and contains numbers only.</p>\n";
+                if (!($card_number[0] == "5" && ($card_number[1] >= 1 && $card_number[1] <= 5))) {                        //check if first 2 numbers are 51->55
+                    $error_msg .= "<p class='error-message'>MasterCard must start with digits \"51\" through to \"55\".</p>\n";
+                } else if (!preg_match("/^\d{16}$/", $card_number)) {                                                    //check if length is 16 and only contains numbers
+                    $error_msg .= "<p class='error-message'>MasterCard number must be 16 digits and contains numbers only.</p>\n";
+                }
+                break;
+            case "amex":                                                                                             //post code check for amex type
+                if (!($card_number[0] == "3" && ($card_number[1] == "4" || $card_number[1] == "7"))) {                    //check if first 2 numbers are 34 or 37
+                    $errMsg .= "<p class='align-center'>American Express must start with \"34\" or \"37\".</p>\n";
+                } else if (!preg_match("/^\d{15}$/", $card_number)) {                                                            //check if length is 15 and only contains numbers
+                    $errMsg .= "<p class='align-center'>MasterCard number must be 15 digits and contains numbers only.</p>\n";
                 }
                 break;
         }
     }
 
-    //Card expiry date validation
-    $card_expiry = cleanseInput($_POST["card_expiry"]);                    //sanitise input
+    //Card expiry validation
+    $card_expiry = cleanseInput($_POST["card_expiry"]);
     if ($card_expiry == "") {
-        $error_msg .= "<p class=''>Card expiry date cannot be left blank.</p>\n";    //Check if expiry date is left empty
-    } else if (!preg_match("/^\d{2}\/\d{2}$/", $cardExpiry)) {        //Check if expiry date is in the right format
-        $error_msg .= "<p class=''>Please enter expiry in the format of mm/yy.</p>\n";
-    } else {        //Check if the card is expired
-        $date = explode("/", $cardExpiry);
+        $error_msg .= "<p class='error-message'>Card expiry date cannot be left blank.</p>\n";
+    } else if (!preg_match("/^\d{2}\/\d{2}$/", $card_expiry)) {        //Check if expiry date is in the right format
+        $error_msg .= "<p class='error-message'>Expiry should be in the format of mm/yy.</p>\n";
+    } else {
+        $date = explode("/", $card_expiry);
         $month = $date[0];
         $year = $date[1];
         $expires = \DateTime::createFromFormat('my', $month . $year);
         $now = new \DateTime();
         if ($expires < $now) {
-            $error_msg .= "<p class=''>Card is expired.</p>\n";
+            $error_msg .= "<p class='error-message'>Card is expired.</p>\n";
         }
     }
 
     //CVV validation
-    $card_cvv = cleanseInput($_POST["card_cvv"]);                    //sanitise input
+    $card_cvv = cleanseInput($_POST["card_cvv"]);
     if ($card_cvv == "") {
-        $error_msg .= "<p class=''>Card CVV cannot be left blank.</p>\n";        //Check if CVV is left empty
+        $error_msg .= "<p class='error-message'>Card CVV cannot be left blank.</p>\n";        //Check if CVV is left empty
     } else if (!preg_match("/^\d{3}$/", $card_cvv)) {
-        $error_msg .= "<p class=''>CVV must be a 3-digit number.</p>\n";        //check if CVV is a 3-digit number
+        $error_msg .= "<p class='error-message'>CVV must be a 3-digit number.</p>\n";        //check if CVV is a 3-digit number
     }
 
     //If the data is incorrect, redirect to fix_order.php
@@ -227,11 +236,11 @@
 	        	(first_name, last_name, email, street, suburb, state, postcode, phone, contact, enquiry, features, comment,
                 card_type, card_name, card_number, card_expiry, card_CVV, order_cost, order_date, order_status)
 	        	VALUES ('$first_name', '$last_name', '$email', '$street', '$suburb', '$state', '$postcode', '$phone', '$preferred_contact', '$product',
-	        	'$features', '$comment', '$cardType', '$cardName', '$cardNumber', '$cardExpiry', '$cardCVV', '$cost', '$order_date', 'PENDING');";
+	        	'$features', '$comment', '$cardType', '$cardName', '$card_number', '$card_expiry', '$cardCVV', '$cost', '$order_date', 'PENDING');";
             $execute = mysqli_query($conn, $add_order);
 
             if ($execute) {
-                $confirm_msg = "<p class=''>Your order is recorded</p>"
+                $confirm_msg = "<p class='error-message'>Your order is recorded</p>"
                     . "<table class=''receipt-table'><tr><th>ITEM</th><th>VALUE</th></tr>"
                     . "<tr><th>Order number:</th><td>" . mysqli_insert_id($conn) . "</td></tr>"
                     . "<tr><th>Total cost (GST included) ($)</th><td>$total_cost</td></tr>"
@@ -247,8 +256,13 @@
                     . "<tr><th>Phone number</th><td>$phone</td></tr>"
                     . "<tr><th>Contact method</th><td>$preferred_contact</td></tr>"
                     . "<tr><th>Product:</th><td>$product</td></tr>"
-                    . "<tr><th>Features chosen</th><td>$features</td></tr>"
-                    . "<tr><th>Comment</th><td>$comment</td></tr>"
+                    . "<tr><th>Features chosen:</th><td>$features</td></tr>"
+                    . "<tr><th>Comments:</th><td>$comment</td></tr>"
+                    . "<tr><th>Card type:</th><td>$card_type</td></tr>"
+                    . "<tr><th>Card owner:</th><td>$card_name</td></tr>"
+                    . "<tr><th>Card number</th><td>$card_number</td></tr>"
+                    . "<tr><th>Card expiry</th><td>$card_expiry</td></tr>"
+                    . "<tr><th>Card CVV</th><td>$card_cvv</td></tr>"
                     . "</table>";
             } else {
                 $confirm_msg = "<p>Failed to add order. Please try again later.</p>";
