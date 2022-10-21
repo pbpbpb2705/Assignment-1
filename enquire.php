@@ -158,6 +158,34 @@
                 <input type="reset" value="Reset">
             </fieldset>
 
+            <fieldset id="card-details">
+                <legend><label for="card-type">Payment details:</label></legend>
+                <div id="cardtype">
+                    <input type="text" name="card-type" id="card-type-box">
+                    <br>
+                    <label class="name_label" for="card-type-box">Card type:</label>
+                </div>
+                <div id="cardname">
+                    <input type="text" name="card-name" id="card-name-box">
+                    <br>
+                    <label class="name_label" for="card-name-box">Owner's name:</label>
+                </div>
+                <div id="cardnumber">
+                    <input type="text" name="card-number" id="card-number-box">
+                    <br>
+                    <label class="name_label" for="card-number-box">Card number:</label>
+                </div>
+                <div id="cardexpiry">
+                    <input type="text" name="card-expiry" id="card-expiry-box">
+                    <br>
+                    <label class="name_label" for="card-expiry-box">Expiry date:</label>
+                </div>
+                <div id="cardcvv">
+                    <input type="text" name="card-cvv" id="card-cvv-box">
+                    <br>
+                    <label class="name_label" for="card-cvv-box">Card CVV:</label>
+                </div>
+            </fieldset>
             <br>
         </form>
     </section>

@@ -179,11 +179,11 @@
         $_SESSION["product"] = $product;
         $_SESSION["preferred_contact"] = $preferred_contact;
         $_SESSION["features"] = $features;
-        $_SESSION["comment"] = $card_type;
-        $_SESSION["comment"] = $card_name;
-        $_SESSION["comment"] = $card_number;
-        $_SESSION["comment"] = $card_expiry;
-        $_SESSION["comment"] = $card_cvv;
+        $_SESSION["card_type"] = $card_type;
+        $_SESSION["card_name"] = $card_name;
+        $_SESSION["card_number"] = $card_number;
+        $_SESSION["card_expiry"] = $card_expiry;
+        $_SESSION["card_cvv"] = $card_cvv;
         header("location:fix_order.php");
         exit();
     }
