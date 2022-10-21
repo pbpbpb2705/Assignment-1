@@ -22,7 +22,7 @@
 
     $error_msg = "";
 
-    //Data validation
+    //Data cleansing
     $first_name = cleanseInput($_POST["first_name"]);
     $last_name = cleanseInput($_POST["last_name"]);
     $email = cleanseInput($_POST["email"]);
@@ -31,50 +31,40 @@
     $phone = cleanseInput($_POST["phone"]);
     $preferred_contact = cleanseInput($_POST["contact"]);
     $product = cleanseInput($_POST["product"]);
+    $suburb = cleanseInput($_POST["suburb"]);
+    $state = cleanseInput($_POST["state"]);
+    $comments = cleanseInput($_POST["comments"]);
+    $card_type = cleanseInput($_POST["card_type"]);
+    $card_name = cleanseInput($_POST["card_name"]);
+    $card_number = cleanseInput($_POST["card_number"]);
+    $card_expiry = cleanseInput($_POST["card_expiry"]);
+    $card_cvv = cleanseInput($_POST["card_cvv"]);
+
+    //Data validating
     if (!preg_match("/^[a-zA-Z]{1,25}$/", $first_name)) {
         $error_msg .= "<p class='error-message'>First name must contains only alphabetical characters and in between 1-25 characters length.</p>\n";
     }
-
-    //Last name validation
-
     if (!preg_match("/^[a-zA-Z]{1,25}$/", $last_name)) {
         $error_msg .= "<p class='error-message'>Last name must contains only alphabetical characters and in between 1-25 characters length.</p>\n";
     }
-
-    //Email validation
     if (!preg_match("/\S+@\S+\.\S+/", $email)) {
         $error_msg .= "<p class='error-message'>Your email must be in the format of email_name@service_provider_name.com</p>\n";
     }
-
-    //Street validation
     if (!preg_match("/^[a-zA-Z]{1,20}$/", $street)) {
         $error_msg .= "<p class='error-message'>Your street name must contains only alphabetical characters and in between 1-20 characters length.</p>\n";
     }
-
-    //Suburb validation
-    $suburb = cleanseInput($_POST["suburb"]);
     if (!preg_match("/^[a-zA-Z]{1,20}$/", $suburb)) {
         $error_msg .= "<p class='error-message'>Your suburb must contains only alphabetical characters and in between 1-20 characters length.</p>\n";
     }
-
-    //State validation
-    $state = cleanseInput($_POST["state"]);
     if ($state == "none") {
         $error_msg .= "<p class='error-message'>You must select your state.</p>\n";
     }
-
-    //Postcode validation
-
     if (!preg_match("/^\d{4}$/", $postcode)) {
         $error_msg .= "<p class='error-message'>Your postcode must be a 4-digit number.</p>\n";
     }
-
-    //Phone number validation
     if (!preg_match("/^\d{8,12}$/", $phone)) {
         $error_msg .= "<p class='error-message'>Your phone number must contains only numbers and in between 8-12 digits length .</p>\n";
     }
-
-
     if ($product == "0") {
         $error_msg .= "<p class='error-message'>Your must choose a plan .</p>\n";
     } else {
@@ -97,29 +87,17 @@
                 $cost = 1000;
         }
     }
-
-    //Enquiry validation
-    $comments = cleanseInput($_POST["comments"]);
     if ($comments == "") {
         $error_msg .= "<p class='error-message'>You must select your enquiry.</p>\n";
     }
-
-    //Card type validation
-    $card_type = cleanseInput($_POST["card_type"]);
     if ($cardType == "none") {                                //if state has not been selected
         $error_msg .= "<p class='error-message'>You must select your card type.</p>\n";
     }
-
-    //Card name validation
-    $card_name = cleanseInput($_POST["card_name"]);
     if ($cardName == "") {
         $error_msg .= "<p class='error-message'>You must enter your name on card.</p>\n";
     } else if (!preg_match("/^[a-zA-Z ]{1,40}$/", $cardName)) {
         $error_msg .= "<p class='error-message'>Card name must contains only alphabetical characters and spaces and cannot exceed 40 characters length.</p>\n";
     }
-
-    //Card number validation
-    $card_number = cleanseInput($_POST["card_number"]);
     if ($card_number == "") {
         $error_msg .= "<p class='error-message'>You must enter your card number.</p>\n";
     } else {
@@ -147,9 +125,6 @@
                 break;
         }
     }
-
-    //Card expiry validation
-    $card_expiry = cleanseInput($_POST["card_expiry"]);
     if ($card_expiry == "") {
         $error_msg .= "<p class='error-message'>Card expiry date cannot be left blank.</p>\n";
     } else if (!preg_match("/^\d{2}\/\d{2}$/", $card_expiry)) {        //Check if expiry date is in the right format
@@ -164,16 +139,13 @@
             $error_msg .= "<p class='error-message'>Card is expired.</p>\n";
         }
     }
-
-    //CVV validation
-    $card_cvv = cleanseInput($_POST["card_cvv"]);
     if ($card_cvv == "") {
         $error_msg .= "<p class='error-message'>Card CVV cannot be left blank.</p>\n";        //Check if CVV is left empty
     } else if (!preg_match("/^\d{3}$/", $card_cvv)) {
         $error_msg .= "<p class='error-message'>CVV must be a 3-digit number.</p>\n";        //check if CVV is a 3-digit number
     }
 
-    //If the data is incorrect, redirect to fix_order.php
+    //Invalid data case
     if ($error_msg != "") {
         session_start();
         $_SESSION["error_msg"] = $error_msg;
@@ -197,12 +169,11 @@
         exit();
     }
 
+    //Valid data case
     $confirm_msg = "";
-    $conn = @mysqli_connect($host, $user, $pwd, $sql_db);    //connect to database
-
+    $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
     if ($conn) {
         $sql_table = "orders";
-        //Create table if doesn't exist
         $create_table = "CREATE TABLE IF NOT EXISTS $sql_table (
 	                            order_id INT AUTO_INCREMENT PRIMARY KEY,
 	                            first_name VARCHAR(25) NOT NULL,
@@ -228,10 +199,7 @@
 	                            );";
         $result = mysqli_query($conn, $create_table);                //execute the query and store the result into result pointer
         if ($result) {
-            //Order date
             $order_date = date('Y-m-d H:i:s');
-
-            //Insert order query
             $add_order = "INSERT INTO orders
 	        	(first_name, last_name, email, street, suburb, state, postcode, phone, contact, enquiry, features, comment,
                 card_type, card_name, card_number, card_expiry, card_CVV, order_cost, order_date, order_status)
@@ -240,30 +208,25 @@
             $execute = mysqli_query($conn, $add_order);
 
             if ($execute) {
-                $confirm_msg = "<p class='error-message'>Your order is recorded</p>"
-                    . "<table class=''receipt-table'><tr><th>ITEM</th><th>VALUE</th></tr>"
-                    . "<tr><th>Order number:</th><td>" . mysqli_insert_id($conn) . "</td></tr>"
-                    . "<tr><th>Total cost (GST included) ($)</th><td>$total_cost</td></tr>"
-                    . "<tr><th>Order date</th><td>$datetime</td></tr>"
-                    . "<tr><th>Order status</th><td>PENDING</td></tr>"
-                    . "<tr><th>First name</th><td>$first_name</td></tr>"
-                    . "<tr><th>Last name</th><td>$last_name</td></tr>"
-                    . "<tr><th>Email</th><td>$email</td></tr>"
-                    . "<tr><th>Address</th><td>$street</td></tr>"
-                    . "<tr><th>Suburb</th><td>$suburb</td></tr>"
-                    . "<tr><th>State</th><td>$state</td></tr>"
-                    . "<tr><th>Postcode</th><td>$postcode</td></tr>"
-                    . "<tr><th>Phone number</th><td>$phone</td></tr>"
-                    . "<tr><th>Contact method</th><td>$preferred_contact</td></tr>"
-                    . "<tr><th>Product:</th><td>$product</td></tr>"
-                    . "<tr><th>Features chosen:</th><td>$features</td></tr>"
-                    . "<tr><th>Comments:</th><td>$comment</td></tr>"
-                    . "<tr><th>Card type:</th><td>$card_type</td></tr>"
-                    . "<tr><th>Card owner:</th><td>$card_name</td></tr>"
-                    . "<tr><th>Card number</th><td>$card_number</td></tr>"
-                    . "<tr><th>Card expiry</th><td>$card_expiry</td></tr>"
-                    . "<tr><th>Card CVV</th><td>$card_cvv</td></tr>"
-                    . "</table>";
+                session_start();
+                $_SESSION["first_name"] = $first_name;
+                $_SESSION["last_name"] = $last_name;
+                $_SESSION["email"] = $email;
+                $_SESSION["address"] = $address;
+                $_SESSION["suburb"] = $suburb;
+                $_SESSION["state"] = $state;
+                $_SESSION["postcode"] = $postcode;
+                $_SESSION["phone"] = $phone;
+                $_SESSION["product"] = $product;
+                $_SESSION["preferred_contact"] = $preferred_contact;
+                $_SESSION["features"] = $features;
+                $_SESSION["card_type"] = $card_type;
+                $_SESSION["card_name"] = $card_name;
+                $_SESSION["card_number"] = $card_number;
+                $_SESSION["card_expiry"] = $card_expiry;
+                $_SESSION["card_cvv"] = $card_cvv;
+                header("location:receipt.php?message=$confirm_msg");
+                exit();
             } else {
                 $confirm_msg = "<p>Failed to add order. Please try again later.</p>";
             }
