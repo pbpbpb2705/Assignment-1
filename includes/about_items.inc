@@ -1,41 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="author" content="Quoc Bao Pham" />
-    <meta name="topic" content="About page" />
-    <meta name="keywords" content="HTML, CSS" />
-    <meta name="description" content="This is the about page" />
-    <link rel="icon" href="styles/images/logo.png" />
-    <link rel="stylesheet" type="text/css" href="styles/style.css" />
-    <link rel="stylesheet" href="https://use.typekit.net/vvm8zgw.css" />
-    <title>About</title>
-  </head>
-
-  <body>
-    <nav id="taskbar">
-      <a href="index.html" id="logo-container">
-        <img src="styles/images/logo.png" alt="Nameless" id="logo" />
-      </a>
-      <div id="taskbar-icon">
-        <button class="btn-2" onclick="window.location='index.html'">
-          Home
-        </button>
-        <button class="btn-2" onclick="window.location='about.html'">
-          About
-        </button>
-        <button class="btn-2" onclick="window.location='product.html'">
-          Products
-        </button>
-        <button class="btn-2" onclick="window.location='enquire.html'">
-          Enquiry
-        </button>
-        <button class="btn-2" onclick="window.location='enhancements.html'">
-          Enhancements
-        </button>
-      </div>
-    </nav>
-
     <section id="tag-container">
       <div class="tag" id="tag-1">
         <figure>
@@ -503,19 +465,3 @@
         </div>
       </div>
     </section>
-    <footer id="footer">
-      <p class="footer-content">
-        &copy; Copyright 2022 - Nameless <br />
-        <br />
-      </p>
-      <p class="footer-content">Team member:</p>
-      <ul class="footer-content">
-        <li>Quoc Bao Pham</li>
-        <li>Nguyen Hung Nguyen</li>
-        <li>Hoang Hieu Nguyen</li>
-        <li>Trung Kien Nguyen</li>
-        <li>Minh Thanh Dang</li>
-      </ul>
-    </footer>
-  </body>
-</html>

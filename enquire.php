@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Hoang Hieu Nguyen, Minh Thanh Dang" />
@@ -12,41 +13,17 @@
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
     <title>Enquiry</title>
 </head>
+
 <body>
-    <nav id="taskbar">
-        <a href="index.html" id="logo-container">
-          <img src="styles/images/logo.png" alt="Nameless" id="logo" />
-        </a>
-        <div id="taskbar-icon">
-          <button class="btn-2" onclick="window.location='index.html'">
-
-            Home
-          </button>
-          <button class="btn-2" onclick="window.location='about.html'">
-
-            About
-          </button>
-          <button class="btn-2" onclick="window.location='product.html'">
-
-            Products
-          </button>
-          <button class="btn-2" onclick="window.location='enquire.html'">
-
-            Enquiry
-          </button>
-          <button class="btn-2" onclick="window.location='enhancements.html'">
-
-            Enhancements
-          </button>
-        </div>
-    </nav>
-
+    <?php
+    include_once("includes/navbar.inc")
+    ?>
     <section id="section1">
         <h1 id="form-title">Customer Enquiry Form</h1>
 
         <p id="require"><em><strong>*Please fill in all the answer in the form</strong></em></p>
 
-        <form id="form" method="post" action="https://mercury.swin.edu.au/it000000/formtest.php">
+        <form id="form" method="post" novalidate action="process_order.php">
             <fieldset id="name">
                 <legend><label for="first_name_box">Name</label></legend>
                 <div id="first">
@@ -72,50 +49,50 @@
             <br>
 
             <div>
-            <fieldset id="address">
-                <legend>Address</legend>
-                <label for="street">Street Address</label>
-                <input type="text" name="street" id="street" required="required" maxlength="40">
-                <br />
-                <label for="suburb">Suburb/Town</label>
-                <input type="text" name="suburb" id="suburb" required="required" maxlength="20">
-                <br />
-                <label for="state">State</label>
-                <select name="state" id="state">
-                    <option value="VIC">VIC</option>
-                    <option value="NSW">NSW</option>
-                    <option value="QLD">QLD</option>
-                    <option value="NT">NT</option>
-                    <option value="WA">WA</option>
-                    <option value="SA">SA</option>
-                    <option value="TAS">TAS</option>
-                    <option value="ACT">ACT</option>
-                </select>
-                <label for="postcode">Postcode</label>
-                <input type="text" name="postcode" id="postcode" maxlength="4" size="10" required="required" pattern="[0-9]+">
-            </fieldset>
+                <fieldset id="address">
+                    <legend>Address</legend>
+                    <label for="street">Street Address</label>
+                    <input type="text" name="street" id="street" required="required" maxlength="40">
+                    <br />
+                    <label for="suburb">Suburb/Town</label>
+                    <input type="text" name="suburb" id="suburb" required="required" maxlength="20">
+                    <br />
+                    <label for="state">State</label>
+                    <select name="state" id="state">
+                        <option value="VIC">VIC</option>
+                        <option value="NSW">NSW</option>
+                        <option value="QLD">QLD</option>
+                        <option value="NT">NT</option>
+                        <option value="WA">WA</option>
+                        <option value="SA">SA</option>
+                        <option value="TAS">TAS</option>
+                        <option value="ACT">ACT</option>
+                    </select>
+                    <label for="postcode">Postcode</label>
+                    <input type="text" name="postcode" id="postcode" maxlength="4" size="10" required="required" pattern="[0-9]+">
+                </fieldset>
 
-            <fieldset id="phone_field">
-                <legend><label for="Phone">Phone number</label></legend>
-                <input name="phone" id="Phone" type="text" maxlength="10" required="required" pattern="[0-9]+" placeholder="e.g 0123456789">
-            </fieldset>
+                <fieldset id="phone_field">
+                    <legend><label for="Phone">Phone number</label></legend>
+                    <input name="phone" id="Phone" type="text" maxlength="10" required="required" pattern="[0-9]+" placeholder="e.g 0123456789">
+                </fieldset>
 
-            <fieldset id="pref_contact">
-                <legend id="pref_contact_legend">Preferred contact</legend>
+                <fieldset id="pref_contact">
+                    <legend id="pref_contact_legend">Preferred contact</legend>
 
-                <label class="choose_contact">Email
-                    <input required="required" type="radio" name="contact" value="Email">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="choose_contact">Post
-                    <input required="required" type="radio" name="contact" value="Post">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="choose_contact">Phone
-                    <input required="required" type="radio" name="contact" value="Phone">
-                    <span class="checkmark"></span>
-                </label>
-            </fieldset>
+                    <label class="choose_contact">Email
+                        <input required="required" type="radio" name="contact" value="Email">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="choose_contact">Post
+                        <input required="required" type="radio" name="contact" value="Post">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="choose_contact">Phone
+                        <input required="required" type="radio" name="contact" value="Phone">
+                        <span class="checkmark"></span>
+                    </label>
+                </fieldset>
             </div>
 
             <br>
@@ -184,15 +161,7 @@
             <br>
         </form>
     </section>
-    <footer id="footer">
-        <p class="footer-content">&copy; Copyright 2022 - Nameless <br> <br> </p>
-        <p class="footer-content">Team member:</p>
-        <ul class="footer-content">
-          <li> Quoc Bao Pham</li>
-          <li> Nguyen Hung Nguyen</li>
-          <li> Hoang Hieu Nguyen</li>
-          <li> Trung Kien Nguyen</li>
-          <li> Minh Thanh Dang</li>
-        </ul>
-    </footer>
+    <?php
+    include_once("includes/footer.inc")
+    ?>
 </body>
