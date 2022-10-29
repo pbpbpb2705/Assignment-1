@@ -18,9 +18,10 @@
     ?>
     <section id="section1">
         <h1 id="form-title">Customer Enquiry Form</h1>
-
         <p id="require"><em><strong>*Please fill in all the answer in the form</strong></em></p>
         <?php
+            session_start();
+        	$error_msg = $_SESSION["error_msg"];
             echo $error_msg;
         ?>
         <form id="form" method="post" novalidate action="process_order.php">
@@ -114,11 +115,80 @@
                 </select>
             </fieldset>
 
+            <fieldset id="feature_field">
+                <legend>Product feature:</legend>
+
+                <label class="choose_feature">Data
+                    <input type="checkbox" name="feature-1" value="Data">
+                    <span class="checksquare"></span>
+                </label>
+
+
+                <label class="choose_feature">Infinite Data
+                    <input type="checkbox" name="feature-2" value="Infinite Data">
+                    <span class="checksquare"></span>
+                </label>
+
+
+                <label class="choose_feature">Unlimited Call&Text
+                    <input type="checkbox" name="feature-3" value="Unlimited Call&Text">
+                    <span class="checksquare"></span>
+                </label>
+
+                <label class="choose_feature">Data bank
+                    <input type="checkbox" name="feature-4" value="Data bank">
+                    <span class="checksquare"></span>
+                </label>
+
+                <label class="choose_feature">International talk zone 1
+                    <input type="checkbox" name="feature-5" value="International Talk Zone 1">
+                    <span class="checksquare"></span>
+                </label>
+
+                <label class="choose_feature">International talk zone 2
+                    <input type="checkbox" name="feature-6" value="International Talk Zone 2">
+                    <span class="checksquare"></span>
+                </label>
+            </fieldset>
+
             <fieldset id="comments_field">
                 <legend><label for="comments">Comments:</label></legend>
                 <textarea id="comments" name="comments" placeholder="Enter your comments here"></textarea>
 
             </fieldset>
+
+            <fieldset id="card-details">
+                <legend><label for="card-type">Payment details:</label></legend>
+                <div id="cardtype">
+                <select name="card_type" id="cardtype">
+                    <option value="0">Choose an option</option>
+                    <option value="visa">Visa</option>
+                    <option value="mastercard">Mastercard</option>
+                    <option value="amex">American Express</option>
+                </select>
+                </div>
+                <div id="cardname">
+                    <input type="text" name="card-name" id="card-name-box">
+                    <br>
+                    <label class="name_label" for="card-name-box">Owner's name:</label>
+                </div>
+                <div id="cardnumber">
+                    <input type="text" name="card-number" id="card-number-box">
+                    <br>
+                    <label class="name_label" for="card-number-box">Card number:</label>
+                </div>
+                <div id="cardexpiry">
+                    <input type="text" name="card-expiry" id="card-expiry-box">
+                    <br>
+                    <label class="name_label" for="card-expiry-box">Expiry date:</label>
+                </div>
+                <div id="cardcvv">
+                    <input type="text" name="card-cvv" id="card-cvv-box">
+                    <br>
+                    <label class="name_label" for="card-cvv-box">Card CVV:</label>
+                </div>
+            </fieldset>
+
             <fieldset id="submit">
                 <input type="submit" value="Submit">
                 <input type="reset" value="Reset">

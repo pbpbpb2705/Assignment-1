@@ -1085,3 +1085,102 @@ Styling for enhancement.html
   border-radius: 30px;
   padding: 10px;
 }
+
+.enterform
+{
+  width: 350px;
+  margin: 20px auto;
+  padding: 50px 50px;
+  background: #e1f8f8;
+}
+
+.enterform_title
+{
+  margin: 0 0 25px;
+  border: 5px solid #02a1a1;
+  border-radius: 15px;
+  padding: 15px 10px;
+  font-size: 35px;
+  font-weight: bold;
+  text-align: center;
+  color: rgb(42, 145, 53);
+}
+
+.enterform_input_name
+{
+  padding-left: 18px;
+  font-size: 18px;
+  text-align: justify;
+}
+
+.enterform_input
+{
+  width: 90%;
+  height: 40px;
+  margin: 10px 0;
+  border: 2px solid rgb(0, 172, 219);
+  padding: 10px;
+  font-size: 16px;
+}
+
+.enterform_input:focus
+{
+  border: 4px solid #024087;
+  outline: none;
+}
+
+.enterform_submit
+{
+  width: 100%;
+  height: 50px;
+  padding: 10px 0;
+  border: 0;
+  color: rgb(255, 255, 255);
+  background: #1980ff;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bolder;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+}
+
+.receipt_ctn
+{
+    margin: auto;
+    padding: 5%;
+}
+
+.receipt_th
+{
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    border: 3px solid #10420e;
+    border-radius: 15px;
+
+    background-color: #b9ffb7;
+    color: rgb(255, 0, 0);
+
+    font-family: "Lucida Handwriting", "cursive" ;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.receipt_td
+{
+    padding-left: 30px;
+    padding-right: 30px;
+
+    background-color: #d9d0ff;
+    color: rgb(255, 166, 0);
+
+    border: 2px solid #150234;
+    border-radius: 10px;
+
+    font-family: "Brush Script MT", "cursive" ;
+    font-size: 35px;
+    text-align: center;
+}
