@@ -16,8 +16,9 @@
     <?php
     require_once("setting.php");
     require_once("process_function.php");
-    if (!isset($_GET["first_name"])) {
-        header("payment.php");
+    if(!isset($_SERVER['HTTP_REFERER'])){
+        header('location:enquire.php');		//redirect to enquire.php if attempted to access directly
+        exit;
     }
 
     $error_msg = "";
@@ -109,7 +110,7 @@
                     $error_msg .= "<p class='error-message'>Visa card number must be 16 digits and contains numbers only.</p>\n";
                 }
                 break;
-            case "master":                                                                                             //post code check for mastercard type
+            case "mastercard":                                                                                             //post code check for mastercard type
                 if (!($card_number[0] == "5" && ($card_number[1] >= 1 && $card_number[1] <= 5))) {                        //check if first 2 numbers are 51->55
                     $error_msg .= "<p class='error-message'>MasterCard must start with digits \"51\" through to \"55\".</p>\n";
                 } else if (!preg_match("/^\d{16}$/", $card_number)) {                                                    //check if length is 16 and only contains numbers

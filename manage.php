@@ -15,6 +15,9 @@
 	$page = "managePage";
 	include_once("includes/navbar.inc");
 	session_start();
+	if (!isset($_POST["username"])) {
+		header('location: login.php');
+	}
 	?>
 	<h1 class="query_message">Manage</h1>
 	<br><br>

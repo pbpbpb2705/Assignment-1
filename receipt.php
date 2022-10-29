@@ -15,7 +15,7 @@
 		include_once("includes/nav.inc");
 
 		echo "<h2 class='receipt_header'>Receipt</h2>";
-		if (!isset($_GET["execute"])) {
+		if (!isset($_GET["message"])) {
 			header("location:enquire.php");
 			exit();
 		}
