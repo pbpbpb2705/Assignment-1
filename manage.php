@@ -457,7 +457,7 @@
 		if (!$conn) {
 			echo "<h2 class='query_message'>Unable to connect to the database.</h2>";
 		} else {
-			if ($_POST["best"] == "yes" || $_POST["purchase"] == "yes" || $_POST["avgProfit"] == "yes" || $_POST["statusNumber"] == "yes") {
+			if ($_POST["best"] == "yes" || $_POST["purchase"] == "yes" || $_POST["average_profit"] == "yes" || $_POST["order_status_number"] == "yes") {
 				$query = "SELECT * FROM orders";
 				$result = mysqli_query($conn, $query);				//execute the query and store the result into result pointer
 				if (!$result) {
@@ -483,21 +483,21 @@
 					while ($record = mysqli_fetch_assoc($result)) {					//fetch all the records
 						// if showing best selling product was chosen
 						if ($_POST["best"] == "yes") {
-							if (strpos($record["enquiry"], "Mercury") !== false)		//if mercury is selected
+							if (strpos($record["enquiry"], "MERCURY Plan") !== false)		//if mercury is selected
 								$mercuryCount++;
-							if (strpos($record["enquiry"], "Venus") !== false)			//if venus is selected
+							if (strpos($record["enquiry"], "VENUS Plan") !== false)			//if venus is selected
 								$venusCount++;
-							if (strpos($record["enquiry"], "Earth") !== false)			//if bmw is selected
+							if (strpos($record["enquiry"], "EARTH Plan") !== false)			//if bmw is selected
 								$earthCount++;
-							if (strpos($record["enquiry"], "Mars") !== false)		//if tesla is selected
+							if (strpos($record["enquiry"], "MARS Plan") !== false)		//if tesla is selected
 								$marsCount++;
-							if (strpos($record["enquiry"], "Jupiter") !== false)		//if tesla is selected
+							if (strpos($record["enquiry"], "JUPITER Plan") !== false)		//if tesla is selected
 								$jupiterCount++;
-							if (strpos($record["enquiry"], "Saturn") !== false)		//if tesla is selected
+							if (strpos($record["enquiry"], "SATURN Plan") !== false)		//if tesla is selected
 								$saturnCount++;
-							if (strpos($record["enquiry"], "Uranus") !== false)		//if tesla is selected
+							if (strpos($record["enquiry"], "URANUS Plan") !== false)		//if tesla is selected
 								$uranusCount++;
-							if (strpos($record["enquiry"], "Neptune") !== false)		//if tesla is selected
+							if (strpos($record["enquiry"], "NEPTUNE Plan") !== false)		//if tesla is selected
 								$neptuneCount++;
 						}
 						// if showing customer with the highest bill was chosen
@@ -506,27 +506,27 @@
 								$customers[] = $record["last_name"];		//add customer name into array
 							}
 							$index = array_search($record["last_name"], $customers);
-							$customerBills[$index] += $record["cost"];
+							$customerBills[$index] += $record["order_cost"];
 						}
 						// if showing average profit per transaction was chosen
 						if ($_POST["average_profit"] == "yes") {
 							$numberOfOrders++;
-							$sum += $record["cost"];
+							$sum += $record["order_cost"];
 						}
 						// if showing average profit per transaction was chosen
-						if ($_POST["ordes_status_number"] == "yes") {
-							if ($record["status"] == "PENDING")
+						if ($_POST["order_status_number"] == "yes") {
+							if ($record["order_status"] == "PENDING")
 								$pendingCount++;
-							if ($record["status"] == "FULFILLED")
+							if ($record["order_status"] == "FULFILLED")
 								$fulfilledCount++;
-							if ($record["status"] == "PAID")
+							if ($record["order_status"] == "PAID")
 								$paidCount++;
-							if ($record["status"] == "ARCHIVED")
+							if ($record["order_status"] == "ARCHIVED")
 								$archivedCount++;
 						}
 					}
 					echo "<h2 class='query_message'>Advance report result</h2>";
-					if ($_POST["bestSelling"] == "yes") {
+					if ($_POST["best"] == "yes") {
 						$max = $mercuryCount;
 						$name = "Mercury";
 						if ($venusCount > $max) {
@@ -560,7 +560,7 @@
 						echo "<p class='query_message'>Best selling product is: $name, purchased by $max customer(s).</p>";
 					}
 
-					if ($_POST["customerPurchase"] == "yes") {
+					if ($_POST["purchase"] == "yes") {
 						$max = $customerBills[0];
 						$index = 0;
 						for ($i = 1; $i < count($customers); $i++) {
@@ -572,12 +572,12 @@
 						echo "<p class='query_message'>Customer with the highest bill is: $customers[$index], total amount spent is $max$.</p>";
 					}
 
-					if ($_POST["avgProfit"] == "yes") {
+					if ($_POST["average_profit"] == "yes") {
 						$avg = $sum / (float)$numberOfOrders;
 						echo "<p class='query_message'>The average profit per transaction is: ", number_format((float) $avg, 3, '.', ''), "$.</p>";
 					}
 
-					if ($_POST["statusNumber"] == "yes") {
+					if ($_POST["order_status_number"] == "yes") {
 						echo "<p class='query_message'>The number of each order status:</p>";
 						echo "<p class='query_message'>PENDING: $pendingCount order(s)</p>";
 						echo "<p class='query_message'>FULFILLED: $fulfilledCount order(s)</p>";
