@@ -6,6 +6,7 @@
 	<meta name="description" content="manager.php">
 	<meta name="keywords" content="manager.php">
 	<meta name="author" content="Nguyen Hung Nguyen">
+        <link rel="icon" href="styles/images/logo.png" />
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
 	<title>Manage</title>
 </head>
@@ -22,11 +23,11 @@
 		header('location: login.php');
 	}
 	?>
-	<h1 class="query_message">Manage</h1>
+	<h1 class="query-message">Manage Page</h1>
 	<br><br>
 	<!-- Sort options -->
-	<h2 class="query_message">Search</h2>
-	<form method="post" action="manage.php">
+	<h2 class="query-message">Search</h2>
+	<form method="post" class="manage-form" action="manage.php">
 		<fieldset>
 			<legend>Query for a particular order (leave all blank to display all orders)</legend>
 			<p>
@@ -106,34 +107,36 @@
 				</select>
 			</p>
 		</fieldset>
-		<input class="button" type="submit" value="Find" name="Finding">
+		<input class="btn-4" type="submit" value="Find" name="Finding">
 	</form>
 
 	<?php
 	require_once("process_function.php");
-	//if "Order Search" form was submitted
+	//if Search form was submitted
 	if (isset($_POST["Finding"])) {
 		$sort = "";
-		$proviso = "";
-		// If "Sort orders by cost" was chosen
+		$condition = "";
+		// Sort by cost
 		if ($_POST["Arrange"] == "yes")
 			$sort = " ORDER BY order_cost";
-		// If "Sort results by other criteria" was chosen
+		// Sort by others criteria
 		if (isset($_POST["sortProcess"])) {
 			$tag = "";
-			//tag is used to arrange products by descending or ascending
-			if (!isset($_SESSION["sortTag"])) {		// If tag is not been set, it will be set by ascending automatically
+			//Tag is to recognise sorting order (descending or ascending)
+			if (!isset($_SESSION["sortTag"])) {		//tag="ASC" by default
 				$tag = "ASC";
 				$_SESSION["sortTag"] = $tag;
 			} else {
-				if ($_SESSION["sortTag"] == "ASC") {		//switch form ascending to ascending
+				//Altered sortTag to each other
+				if ($_SESSION["sortTag"] == "ASC") {
 					$tag = "DESC";
 					$_SESSION["sortTag"] = $tag;
-				} else { 									//switch form descending to ascending
+				} else {
 					$tag = "ASC";
 					$_SESSION["sortTag"] = $tag;
 				}
 			}
+			//Different criterias to sort
 			if ($_POST["sortProcess"] == "ID") {
 				if ($sort != "")
 					$sort .= ", id $tag";
@@ -166,100 +169,103 @@
 			}
 		}
 
-		// If search criteria was chosen
+		// Searching criteria
 		if (isset($_POST["firstname"]) || isset($_POST["lastname"]) || $_POST["pending"] == "yes" || isset($_POST['product'])) {
 			$firstname = cleanseInput($_POST["firstname"]);
 			$lastname = cleanseInput($_POST["lastname"]);
 			$pending = $_POST["pending"];
-			require_once('settings.php');		//Acquire connection to database
-			$conn = @mysqli_connect($host, $user, $pwd, $sql_db);	//connect to database
+			require_once('settings.php');		//Create connection to database
+			$conn = @mysqli_connect($host, $user, $pwd, $sql_db);	//Attempt to connect to database
 			if (!$conn) {
-				echo "<h2 class='query_message'>Unable to connect to the database.</h2>";
+				echo "<h2 class='query-message'>Unable to connect to the database.</h2>";
 			} else {
 				if ($firstname != "") {
-					if ($proviso != "")
-						$proviso .= " AND ";
-					$proviso .= "first_name LIKE '%$firstname%'";
+					if ($condition != "")
+						$condition .= " AND ";
+					$condition .= "first_name LIKE '%$firstname%'";
 				}
 				if ($lastname != "") {
-					if ($proviso != "")
-						$proviso .= " AND ";
-					$proviso .= "last_name LIKE '%$lastname%'";
+					if ($condition != "")
+						$condition .= " AND ";
+					$condition .= "last_name LIKE '%$lastname%'";
 				}
 				if ($pending == "yes") {
-					if ($proviso != "")
-						$proviso .= " AND ";
-					$proviso .= "order_status LIKE 'PENDING'";
+					if ($condition != "")
+						$condition .= " AND ";
+					$condition .= "order_status LIKE 'PENDING'";
 				}
 				if (isset($_POST['product'])) {
 					$productstatus = $_POST["product"];
 					$product_index = "";
-					if ($proviso != "")
-						$proviso .= " AND (";
+					if ($condition != "")
+						$condition .= " AND (";
 					else
-						$proviso .= " (";
+						$condition .= " (";
 					if (in_array('mercury', $productstatus)) {
 						if ($product_index != "")
-							$proviso .= " OR ";
-						$proviso .= "enquiry LIKE '%Mercury%'";
+							$condition .= " OR ";
+						$condition .= "enquiry LIKE '%Mercury%'";
 						$product_index .= "mercury";
 					}
 					if (in_array('venus', $productstatus)) {
 						if ($product_index != "")
-							$proviso .= " OR ";
-						$proviso .= "enquiry LIKE '%Venus%'";
+							$condition .= " OR ";
+						$condition .= "enquiry LIKE '%Venus%'";
 						$product_index .= "venus";
 					}
 					if (in_array('earth', $productstatus)) {
 						if ($product_index != "")
-							$proviso .= " OR ";
-						$proviso .= "enquiry LIKE '%Earth%'";
+							$condition .= " OR ";
+						$condition .= "enquiry LIKE '%Earth%'";
 						$product_index .= "earth";
 					}
 					if (in_array('mars', $productstatus)) {
 						if ($product_index != "")
-							$proviso .= " OR ";
-						$proviso .= "enquiry LIKE '%Mars%'";
+							$condition .= " OR ";
+						$condition .= "enquiry LIKE '%Mars%'";
 						$product_index .= "mars";
 					}
 					if (in_array('jupiter', $productstatus)) {
 						if ($product_index != "")
-							$proviso .= " OR ";
-						$proviso .= "enquiry LIKE '%Jupiter%'";
+							$condition .= " OR ";
+						$condition .= "enquiry LIKE '%Jupiter%'";
 						$product_index .= "jupiter";
 					}
 					if (in_array('saturn', $productstatus)) {
 						if ($product_index != "")
-							$proviso .= " OR ";
-						$proviso .= "enquiry LIKE '%Saturn%'";
+							$condition .= " OR ";
+						$condition .= "enquiry LIKE '%Saturn%'";
 						$product_index .= "saturn";
 					}
 					if (in_array('uranus', $productstatus)) {
 						if ($product_index != "")
-							$proviso .= " OR ";
-						$proviso .= "enquiry LIKE '%Uranus%'";
+							$condition .= " OR ";
+						$condition .= "enquiry LIKE '%Uranus%'";
 						$product_index .= "uranus";
 					}
 					if (in_array('neptune', $productstatus)) {
 						if ($product_index != "")
-							$proviso .= " OR ";
-						$proviso .= "enquiry LIKE '%Neptune%'";
+							$condition .= " OR ";
+						$condition .= "enquiry LIKE '%Neptune%'";
 						$product_index .= "neptune";
 					}
-					$proviso .= ")";
+					$condition .= ")";
 				}
 			}
 		}
 
-		$proviso = ($proviso != "") ? " WHERE " . $proviso : $proviso;
-		$query = "SELECT * FROM orders" . $proviso . $sort . ";";
+		if ($condition != "") {
+			$condition = " WHERE " . $condition;
+		}
+		//Initialize query
+		$query = "SELECT * FROM orders" . $condition . $sort . ";";
 		$query_result = mysqli_query($conn, $query);				//execute the query and store the result into result pointer
 		if (!$query_result) {
-			echo "<h2 class='query_message'>Failed to execute query: ", $query, ".</h2>";
+			echo "<h2 class='query-message'>Failed to execute query: ", $query, ".</h2>";
 		} else {
 			if (mysqli_num_rows($query_result) > 0) {
-				echo "<h2 class='query_message'>Search result</h2>";
-				echo "<table id='searchResult'>
+				echo "<h2 class='query-message'>Search result</h2>";
+				echo "<table id='searchResult' class='table-2'>
 							<tr>
 								<th>Order ID</th>
 								<th>Total cost ($)</th>
@@ -283,8 +289,8 @@
 				echo "</table>";
 				mysqli_free_result($query_result);
 			} else {
-				echo "<h2 class='query_message'>No result matches your search criteria</h2>";
-				echo "<p class='query_message'>Your query: $query</p>";
+				echo "<h2 class='query-message'>No result matches your search criteria</h2>";
+				echo "<p class='query-message'>Your query: $query</p>";
 			}
 		}
 		mysqli_close($conn);
@@ -292,8 +298,8 @@
 	?>
 	<br><br><br>
 	<!-- Enable manage to modify orders' status -->
-	<h2 class="query_message">Update order's status</h2>
-	<form method="post" action="manage.php">
+	<h2 class="query-message">Update order's status</h2>
+	<form method="post" class="manage-form" action="manage.php">
 		<fieldset>
 			<legend>Update status of an order:</legend>
 			<p>
@@ -311,17 +317,17 @@
 				</select>
 			</p>
 		</fieldset>
-		<input class="button" type="submit" value="Update" name="Update">
+		<input class="btn-4" type="submit" value="Update" name="Update">
 	</form>
 
 	<?php
 	require_once("process_function.php");
-	//if update form was submitted
+	//Update form was submitted
 	if (isset($_POST["Update"])) {
-		require_once('settings.php');		//Acquire connection to database
-		$conn = @mysqli_connect($host, $user, $pwd, $sql_db);	//connect to database
+		require_once('settings.php');
+		$conn = @mysqli_connect($host, $user, $pwd, $sql_db);	//Attempt to connect to database
 		if (!$conn) {
-			echo "<h2 class='query_message'>Unable to connect to the database.</h2>";
+			echo "<h2 class='query-message'>Unable to connect to the database.</h2>";
 		} else {
 			$ID = cleanseInput($_POST["ID_update"]);
 			$status = $_POST["Status"];
@@ -330,28 +336,30 @@
 			if ($query_result) {
 				if (mysqli_num_rows($query_result) > 0) {
 					$query = "UPDATE orders SET order_status='$status' WHERE order_id='$ID'";
-					$query_result = mysqli_query($conn, $query);		//execute the query and store the result into result pointer
+					$query_result = mysqli_query($conn, $query);		//Execute the query and store the result
 					if (!$query_result) {
-						echo "<h2 class='query_message'>Failed to execute query: ", $query, ".</h2>";
+						echo "<h2 class='query-message'>Failed to execute query: ", $query, ".</h2>";
 					} else {
-						echo "<h2 class='query_message'>Order status has been updated.</h2>";
+						echo "<h2 class='query-message'>Order status has been updated.</h2>";
 					}
 				}
 				else {
-					echo "<h2 class='query_message'>Can't find order with ID $ID.</h2>";
+					//No order with given ID
+					echo "<h2 class='query-message'>Can't find order with ID $ID.</h2>";
 				}
 				mysqli_close($conn);
 			}
 			else {
-				echo "<h2 class='query_message'>Failed to execute query: ", $query, ".</h2>";
+				//Query failed
+				echo "<h2 class='query-message'>Failed to execute query: ", $query, ".</h2>";
 			}
 		}
 	}
 	?>
 	<br><br><br>
 	<!-- Enable manage to delete pending orders -->
-	<h2 class="query_message">Delete PENDING order</h2>
-	<form method="post" action="manage.php">
+	<h2 class="query-message">Delete PENDING order</h2>
+	<form method="post" class="manage-form" action="manage.php">
 		<fieldset>
 			<legend>Delete an order (only PENDING orders can be deleted):</legend>
 			<p>
@@ -359,37 +367,40 @@
 				<input type="number" name="ID_delete" id="ID_delete" required="required">
 			</p>
 		</fieldset>
-		<input class="button" type="submit" value="Delete" name="Delete">
+		<input class="btn-4" type="submit" value="Delete" name="Delete">
 	</form>
 
 	<?php
 	require_once("process_function.php");
 	//if delete form was submitted
 	if (isset($_POST["Delete"])) {
-		require_once('settings.php');		//Acquire connection to database
-		$conn = @mysqli_connect($host, $user, $pwd, $sql_db);	//connect to database
+		require_once('settings.php');
+		$conn = @mysqli_connect($host, $user, $pwd, $sql_db);	//Attempt to connect to database
 		if (!$conn) {
-			echo "<h2 class='query_message'>Unable to connect to the database.</h2>";
+			echo "<h2 class='query-message'>Unable to connect to the database.</h2>";
 		} else {
 			$ID = cleanseInput($_POST["ID_delete"]);
 			$query = "SELECT order_status FROM orders WHERE order_id='$ID'";
-			$query_result = mysqli_query($conn, $query);		//execute the query and store the result into result pointer
+			$query_result = mysqli_query($conn, $query);		//Execute the query and store the result into result pointer
 			if (!$query_result) {
-				echo "<h2 class='query_message'>Failed to execute query: ", $query, ".</h2>";
+				echo "<h2 class='query-message'>Failed to execute query: ", $query, ".</h2>";
 			} else {
+				//No order with the given ID
 				$saving = mysqli_fetch_assoc($query_result);
 				if (mysqli_num_rows($query_result) == 0 ) {
-					echo "<h2 class='query_message'>Can't find order with ID $ID</h2>";
+					echo "<h2 class='query-message'>Can't find order with ID $ID</h2>";
 				}
+				//Order status not Pending
 				else if ($saving["order_status"] != "PENDING") {
-					echo "<h2 class='query_message'>Sorry you cannot delete this order, only existed orders or PENDING orders can be deleted.</h2>";
+					echo "<h2 class='query-message'>Sorry you cannot delete this order, only existed orders or PENDING orders can be deleted.</h2>";
 				} else {
+					//Successfully deleted
 					$delete = "DELETE FROM orders WHERE order_id='$ID'";
 					$process = mysqli_query($conn, $delete);
 					if (!$process) {
-						echo "<h2 class='query_message'>Failed to execute query: ", $delete, ".</h2>";
+						echo "<h2 class='query-message'>Failed to execute query: ", $delete, ".</h2>";
 					} else {
-						echo "<h2 class='query_message'>The order has been deleted.</h2>";
+						echo "<h2 class='query-message'>The order has been deleted.</h2>";
 					}
 				}
 			}
@@ -399,8 +410,8 @@
 	?>
 	<br><br><br>
 	<!-- Enhancement -->
-	<h2 class="query_message" id="enhancement-1">Advance Report</h2>
-	<form method="post" action="manage.php">
+	<h2 class="query-message" id="enhancement-1">Advance Report</h2>
+	<form method="post" class="manage-form"" action="manage.php">
 		<fieldset>
 			<legend>More advanced manage report:</legend>
 			<p>
@@ -451,24 +462,25 @@
 				</span>
 			</p>
 		</fieldset>
-		<input class="button" type="submit" value="Check" name="Advance">
+		<input class="btn-4" type="submit" value="Check" name="Advance">
 	</form>
 
 	<?php
-	//if enhancement form was submitted
+	//Advance (enhancement form) was submitted
 	if (isset($_POST["Advance"])) {
 		require_once('settings.php');		//Acquire connection to database
 		$conn = @mysqli_connect($host, $user, $pwd, $sql_db);	//connect to database
 
 		if (!$conn) {
-			echo "<h2 class='query_message'>Unable to connect to the database.</h2>";
+			echo "<h2 class='query-message'>Unable to connect to the database.</h2>";
 		} else {
 			if ($_POST["best"] == "yes" || $_POST["purchase"] == "yes" || $_POST["average_profit"] == "yes" || $_POST["order_status_number"] == "yes") {
 				$query = "SELECT * FROM orders";
 				$result = mysqli_query($conn, $query);				//execute the query and store the result into result pointer
 				if (!$result) {
-					echo "<h2 class='query_message'>Failed to execute query: ", $query, ".</h2>";
+					echo "<h2 class='query-message'>Failed to execute query: ", $query, ".</h2>";
 				} else {
+					//Product count
 					$mercuryCount = 0;
 					$venusCount = 0;
 					$earthCount = 0;
@@ -476,18 +488,24 @@
 					$jupiterCount = 0;
 					$saturnCount = 0;
 					$uranusCount = 0;
-					$neptuneCount = 0; //for best selling product
+					$neptuneCount = 0;
+
+					//Customer with the highest bill
 					$customers = array();
-					$customerBills = array_fill(0, 100, 0);		//for customer with the highest bill
+					$customerBills = array_fill(0, 100, 0);
+
+					//Average profit variables
 					$sum = 0;
 					$numberOfOrders = 0;
+
+					//Order status count
 					$pendingCount = 0;
 					$fulfilledCount = 0;
 					$paidCount = 0;
 					$archivedCount = 0;
 
 					while ($record = mysqli_fetch_assoc($result)) {					//fetch all the records
-						// if showing best selling product was chosen
+						// Best selling product
 						if ($_POST["best"] == "yes") {
 							if (strpos($record["enquiry"], "MERCURY Plan") !== false)		//if mercury is selected
 								$mercuryCount++;
@@ -506,7 +524,7 @@
 							if (strpos($record["enquiry"], "NEPTUNE Plan") !== false)		//if tesla is selected
 								$neptuneCount++;
 						}
-						// if showing customer with the highest bill was chosen
+						// Customer with the highest bill
 						if ($_POST["purchase"] == "yes") {
 							if (!in_array($record["last_name"], $customers)) {
 								$customers[] = $record["last_name"];		//add customer name into array
@@ -514,12 +532,12 @@
 							$index = array_search($record["last_name"], $customers);
 							$customerBills[$index] += $record["order_cost"];
 						}
-						// if showing average profit per transaction was chosen
+						// Average profit per transaction
 						if ($_POST["average_profit"] == "yes") {
 							$numberOfOrders++;
 							$sum += $record["order_cost"];
 						}
-						// if showing average profit per transaction was chosen
+						// Order status number
 						if ($_POST["order_status_number"] == "yes") {
 							if ($record["order_status"] == "PENDING")
 								$pendingCount++;
@@ -531,7 +549,8 @@
 								$archivedCount++;
 						}
 					}
-					echo "<h2 class='query_message'>Advance report result</h2>";
+					//Display best selling result
+					echo "<h2 class='query-message'>Advance report result</h2>";
 					if ($_POST["best"] == "yes") {
 						$max = $mercuryCount;
 						$name = "Mercury";
@@ -563,9 +582,10 @@
 							$max = $neptuneCount;
 							$name = "Neptune";
 						}
-						echo "<p class='query_message'>Best selling product is: $name, purchased by $max customer(s).</p>";
+						echo "<p class='query-message'>Best selling product is: $name, purchased by $max customer(s).</p>";
 					}
 
+					//Display customer with the highest bill
 					if ($_POST["purchase"] == "yes") {
 						$max = $customerBills[0];
 						$index = 0;
@@ -575,20 +595,22 @@
 								$index = $i;
 							}
 						}
-						echo "<p class='query_message'>Customer with the highest bill is: $customers[$index], total amount spent is $max$.</p>";
+						echo "<p class='query-message'>Customer with the highest bill is: $customers[$index], total amount spent is $max$.</p>";
 					}
 
+					//Display average profit
 					if ($_POST["average_profit"] == "yes") {
 						$avg = $sum / (float)$numberOfOrders;
-						echo "<p class='query_message'>The average profit per transaction is: ", number_format((float) $avg, 3, '.', ''), "$.</p>";
+						echo "<p class='query-message'>The average profit per transaction is: ", number_format((float) $avg, 3, '.', ''), "$.</p>";
 					}
 
+					//Display order status number
 					if ($_POST["order_status_number"] == "yes") {
-						echo "<p class='query_message'>The number of each order status:</p>";
-						echo "<p class='query_message'>PENDING: $pendingCount order(s)</p>";
-						echo "<p class='query_message'>FULFILLED: $fulfilledCount order(s)</p>";
-						echo "<p class='query_message'>PAID: $paidCount order(s)</p>";
-						echo "<p class='query_message'>ARCHIVED: $archivedCount order(s)</p>";
+						echo "<p class='query-message'>The number of each order status:</p>";
+						echo "<p class='query-message'>PENDING: $pendingCount order(s)</p>";
+						echo "<p class='query-message'>FULFILLED: $fulfilledCount order(s)</p>";
+						echo "<p class='query-message'>PAID: $paidCount order(s)</p>";
+						echo "<p class='query-message'>ARCHIVED: $archivedCount order(s)</p>";
 					}
 				}
 			}

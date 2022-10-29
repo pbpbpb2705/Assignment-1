@@ -7,12 +7,14 @@
 	<meta name="keywords" content="HTML, PHP" >
     <meta name="author" content="MOON" >
 	<title> Sign Up </title>
+  <link rel="icon" href="styles/images/logo.png" />
     <link rel="stylesheet" type="text/css" href="./styles/style.css">
 </head>
 
 <body>
     <?php
-	require_once("./settings.php");
+	include_once("includes/navbar.inc");
+	require_once("settings.php");
         if (!isset($_POST["username"]))
         {
     ?>
@@ -37,29 +39,33 @@
             $username = trim($_POST["username"]);
             $password = trim($_POST["password"]);
 
-            $conn = mysqli_connect($host, $user, $pwd, $sql_db);
+            $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
             if (!$conn)
             {   echo "<p> Unable to connect to the database. Please try again later. </p>"; }
             else
             {
-                $sql_table = "account";
-                $create_table_query = "CREATE TABLE IF NOT EXISTS $sql_table (
+		//Create table if needed
+                $account_table = "account";
+                $create_table_query = "CREATE TABLE IF NOT EXISTS $account_table (
                     id INT AUTO_INCREMENT PRIMARY KEY,
                     username VARCHAR(255) NOT NULL,
                     password VARCHAR(255) NOT NULL,
                     email VARCHAR(255) NOT NULL
                     );";
+		//Execute query
                 $create_table_result = mysqli_query($conn, $create_table_query);
                 if (!$create_table_result)
                 {   echo "<p> Failed to create the new table. Please try again later. </p>"; }
                 else
                 {
-                    $query = "INSERT into $sql_table (username, password, email) VALUES ('$username', '$password', '$email');";
+		    //Add username and password to account table
+                    $query = "INSERT into $account_table (username, password, email) VALUES ('$username', '$password', '$email');";
                     $result = mysqli_query($conn, $query);
                     if (mysqli_connect_errno())
                     {   echo "<p> Failed to connect to MySQL </p>" . mysqli_connect_error(); }
                     if ($result)
                     {
+			//Successfully signed up
                         echo "<div>
                                 <h2> You are registered successfully. </h2> <br>
                                 <p> Click here to <a href='./login.php'> Login </a> </p>
@@ -67,6 +73,7 @@
                     }
                     else
                     {
+			//Errors occurred
                         echo "<div>
                                 <h2> Something is wrong with your registration!! </h2> <br>
                                 <p> Click here to <a href='./signup.php'> Signup </a> again. </p>
@@ -76,6 +83,7 @@
                 }
             }
         }
+	include_once("includes/footer.inc");
     ?>
 </body>
 

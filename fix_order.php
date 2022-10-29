@@ -21,6 +21,7 @@
         <p id="require"><em><strong>*Please fill in all the answer in the form</strong></em></p>
         <?php
             session_start();
+            //Print error message
         	$error_msg = $_SESSION["error_msg"];
             echo $error_msg;
         ?>
@@ -28,11 +29,9 @@
             <fieldset id="name">
                 <legend><label for="first_name_box">Name</label></legend>
                 <div id="first">
-                    <?php
-                    echo "<input type='text' name='first_name' id='first_name_box' required='required' maxlength='25' pattern='[A-Za-z]+'>";
-                    echo "<br>
-                        <label class='name_label' for='first_name_box'>First</label>";
-                    ?>
+                    <input type='text' name='first_name' id='first_name_box' required='required' maxlength='25' pattern='[A-Za-z]+'>";
+                    <br>
+                    <label class='name_label' for='first_name_box'>First</label>;
                 </div>
                 <div id="last">
                     <input type="text" name="last_name" id="last_name_box" required="required" maxlength="25" pattern="[A-Za-z]+">

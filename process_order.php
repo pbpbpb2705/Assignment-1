@@ -14,24 +14,29 @@
 
 <body>
     <?php
-    require_once("setting.php");
+    require_once("settings.php");
     require_once("process_function.php");
-    if(!isset($_SERVER['HTTP_REFERER'])){
-        header('location:enquire.php');		//redirect to enquire.php if attempted to access directly
-        exit;
-    }
-
+if(!isset($_SERVER['HTTP_REFERER'])){
+	header('location:enquire.php');
+	exit;
+}
     $error_msg = "";
 
     //Data cleansing
     $first_name = cleanseInput($_POST["first_name"]);
     $last_name = cleanseInput($_POST["last_name"]);
     $email = cleanseInput($_POST["email"]);
-    $street = cleanseInput($_POST["street"]);
+    $address = cleanseInput($_POST["address"]);
     $postcode = cleanseInput($_POST["postcode"]);
     $phone = cleanseInput($_POST["phone"]);
     $preferred_contact = cleanseInput($_POST["contact"]);
     $product = cleanseInput($_POST["product"]);
+    $feature_1 = cleanseInput($_POST["feature-1"]);
+    $feature_2 = cleanseInput($_POST["feature-2"]);
+    $feature_3 = cleanseInput($_POST["feature-3"]);
+    $feature_4 = cleanseInput($_POST["feature-4"]);
+    $feature_5 = cleanseInput($_POST["feature-5"]);
+    $feature_6 = cleanseInput($_POST["feature-6"]);
     $suburb = cleanseInput($_POST["suburb"]);
     $state = cleanseInput($_POST["state"]);
     $comments = cleanseInput($_POST["comments"]);
@@ -51,8 +56,8 @@
     if (!preg_match("/\S+@\S+\.\S+/", $email)) {
         $error_msg .= "<p class='error-message'>Your email must be in the format of email_name@service_provider_name.com</p>\n";
     }
-    if (!preg_match("/^[a-zA-Z]{1,20}$/", $street)) {
-        $error_msg .= "<p class='error-message'>Your street name must contains only alphabetical characters and in between 1-20 characters length.</p>\n";
+    if (!preg_match("/^[a-zA-Z0-9 ]{1,40}$/", $address)) {
+        $error_msg .= "<p class='error-message'>Your address must contains only alphabetical characters, numbers, spaces and in between 1-40 characters length.</p>\n";
     }
     if (!preg_match("/^[a-zA-Z]{1,20}$/", $suburb)) {
         $error_msg .= "<p class='error-message'>Your suburb must contains only alphabetical characters and in between 1-20 characters length.</p>\n";
@@ -69,58 +74,90 @@
     if ($product == "0") {
         $error_msg .= "<p class='error-message'>Your must choose a plan .</p>\n";
     } else {
-        switch ($product) {
-            case "MERCURY Plan":
+            if ($product == "MERCURY Plan") {
                 $cost = 15;
-            case "VENUS Plan":
+	    }
+            if ($product == "VENUS Plan") {
                 $cost = 25;
-            case "EARTH Plan":
+	    }
+            if ($product == "EARTH Plan") {
                 $cost = 35;
-            case "MARS Plan":
+	    }
+            if ($product == "MARS Plan") {
                 $cost = 45;
-            case "JUPITER Plan":
+	    }
+            if ($product == "JUPITER Plan") {
                 $cost = 55;
-            case "SATURN Plan":
+	    }
+            if ($product == "SATURN Plan") {
                 $cost = 65;
-            case "URANUS Plan":
+	    }
+            if ($product == "URANUS Plan") {
                 $cost = 155;
-            case "NEPTUNE Plan":
+	    }
+            if ($product == "NEPTUNE Plan") {
                 $cost = 1000;
-        }
+	    }
+    }
+    $features = "";
+    if ($feature_1 != "") {
+	$features .= "Dat,";
+    }
+    if ($feature_2 != "") {
+	$features .= "InfDat,";
+    }
+
+    if ($feature_3 != "") {
+	$features .= "Call,";
+    }
+
+    if ($feature_4 != "") {
+	$features .= "DatBank,";
+    }
+
+    if ($feature_5 != "") {
+	$features .= "Inter1,";
+    }
+
+    if ($feature_6 != "") {
+	$features .= "Inter2";
+    }
+    if ($features == "") {
+	$error_msg .= "<p class='error-message'>You must select enquiry features.</p>\n";
     }
     if ($comments == "") {
-        $error_msg .= "<p class='error-message'>You must select your enquiry.</p>\n";
+        $error_msg .= "<p class='error-message'>You must select your product.</p>\n";
     }
-    if ($cardType == "none") {                                //if state has not been selected
+    if ($card_type == "none") {                                //if state has not been selected
         $error_msg .= "<p class='error-message'>You must select your card type.</p>\n";
     }
-    if ($cardName == "") {
+    if ($card_name == "") {
         $error_msg .= "<p class='error-message'>You must enter your name on card.</p>\n";
-    } else if (!preg_match("/^[a-zA-Z ]{1,40}$/", $cardName)) {
+    } else if (!preg_match("/^[a-zA-Z ]{1,40}$/", $card_name)) {
         $error_msg .= "<p class='error-message'>Card name must contains only alphabetical characters and spaces and cannot exceed 40 characters length.</p>\n";
     }
     if ($card_number == "") {
         $error_msg .= "<p class='error-message'>You must enter your card number.</p>\n";
     } else {
         switch ($card_type) {
-            case "visa":                                                                                             //post code check for visa type
-                if ($card_number[0] != "4") {                                                                            //check if first number is 4
+            case "visa":
+                if ($card_number[0] != "4") {                                                                            //Check if first number is 4
                     $error_msg .= "<p class='error-message'>Visa card number must start with 4.</p>\n";
-                } else if (!preg_match("/^\d{16}$/", $card_number)) {                                                    //check if length is 16 and only contains numbers
+                } else if (!preg_match("/^\d{16}$/", $card_number)) {                                                    //Check if length is 16 and only contains numbers
                     $error_msg .= "<p class='error-message'>Visa card number must be 16 digits and contains numbers only.</p>\n";
                 }
                 break;
-            case "mastercard":                                                                                             //post code check for mastercard type
-                if (!($card_number[0] == "5" && ($card_number[1] >= 1 && $card_number[1] <= 5))) {                        //check if first 2 numbers are 51->55
+            case "mastercard":
+                if (!($card_number[0] == "5" && ($card_number[1] >= 1 && $card_number[1] <= 5))) {                        //Check if first 2 numbers are 51->55
                     $error_msg .= "<p class='error-message'>MasterCard must start with digits \"51\" through to \"55\".</p>\n";
-                } else if (!preg_match("/^\d{16}$/", $card_number)) {                                                    //check if length is 16 and only contains numbers
+                } else if (!preg_match("/^\d{16}$/", $card_number)) {                                                    //Check if length is 16 and only contains numbers
                     $error_msg .= "<p class='error-message'>MasterCard number must be 16 digits and contains numbers only.</p>\n";
                 }
                 break;
-            case "amex":                                                                                             //post code check for amex type
-                if (!($card_number[0] == "3" && ($card_number[1] == "4" || $card_number[1] == "7"))) {                    //check if first 2 numbers are 34 or 37
+            case "amex":
+                if (!($card_number[0] == "3" && ($card_number[1] == "4" || $card_number[1] == "7"))) {                    //Check if first 2 numbers are 34 or 37
                     $errMsg .= "<p class='align-center'>American Express must start with \"34\" or \"37\".</p>\n";
-                } else if (!preg_match("/^\d{15}$/", $card_number)) {                                                            //check if length is 15 and only contains numbers
+                } else if (!preg_match("/^\d{15}$/", $card_number)) {                                                            //Check if length is 15 and only contains numbers
                     $errMsg .= "<p class='align-center'>MasterCard number must be 15 digits and contains numbers only.</p>\n";
                 }
                 break;
@@ -134,6 +171,8 @@
         $date = explode("/", $card_expiry);
         $month = $date[0];
         $year = $date[1];
+
+        //Check if card is expired or not
         $expires = \DateTime::createFromFormat('my', $month . $year);
         $now = new \DateTime();
         if ($expires < $now) {
@@ -150,22 +189,7 @@
     if ($error_msg != "") {
         session_start();
         $_SESSION["error_msg"] = $error_msg;
-        $_SESSION["first_name"] = $first_name;
-        $_SESSION["last_name"] = $last_name;
-        $_SESSION["email"] = $email;
-        $_SESSION["address"] = $address;
-        $_SESSION["suburb"] = $suburb;
-        $_SESSION["state"] = $state;
-        $_SESSION["postcode"] = $postcode;
-        $_SESSION["phone"] = $phone;
-        $_SESSION["product"] = $product;
-        $_SESSION["preferred_contact"] = $preferred_contact;
-        $_SESSION["features"] = $features;
-        $_SESSION["card_type"] = $card_type;
-        $_SESSION["card_name"] = $card_name;
-        $_SESSION["card_number"] = $card_number;
-        $_SESSION["card_expiry"] = $card_expiry;
-        $_SESSION["card_cvv"] = $card_cvv;
+        //Pass message to fix order page
         header("location:fix_order.php");
         exit();
     }
@@ -175,6 +199,7 @@
     $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
     if ($conn) {
         $sql_table = "orders";
+        //Create table if it doesn't initialized
         $create_table = "CREATE TABLE IF NOT EXISTS $sql_table (
 	                            order_id INT AUTO_INCREMENT PRIMARY KEY,
 	                            first_name VARCHAR(25) NOT NULL,
@@ -198,18 +223,20 @@
 	                            order_date DATETIME NOT NULL,
                                 order_status VARCHAR(10) NOT NULL
 	                            );";
-        $result = mysqli_query($conn, $create_table);                //execute the query and store the result into result pointer
+        $result = mysqli_query($conn, $create_table);
+        //Execute the query
         if ($result) {
             $order_date = date('Y-m-d H:i:s');
             $add_order = "INSERT INTO orders
 	        	(first_name, last_name, email, street, suburb, state, postcode, phone, contact, enquiry, features, comment,
                 card_type, card_name, card_number, card_expiry, card_CVV, order_cost, order_date, order_status)
-	        	VALUES ('$first_name', '$last_name', '$email', '$street', '$suburb', '$state', '$postcode', '$phone', '$preferred_contact', '$product',
-	        	'$features', '$comment', '$cardType', '$cardName', '$card_number', '$card_expiry', '$cardCVV', '$cost', '$order_date', 'PENDING');";
+	        	VALUES ('$first_name', '$last_name', '$email', '$address', '$suburb', '$state', '$postcode', '$phone', '$preferred_contact', '$product',
+	        	'$features', '$comments', '$card_type', '$card_name', '$card_number', '$card_expiry', '$cardCVV', '$cost', '$order_date', 'PENDING');";
             $execute = mysqli_query($conn, $add_order);
 
             if ($execute) {
                 session_start();
+                //Pass information to receipt page
                 $_SESSION["first_name"] = $first_name;
                 $_SESSION["last_name"] = $last_name;
                 $_SESSION["email"] = $email;
@@ -221,6 +248,7 @@
                 $_SESSION["product"] = $product;
                 $_SESSION["preferred_contact"] = $preferred_contact;
                 $_SESSION["features"] = $features;
+		        $_SESSION["order_cost"] = $cost;
                 $_SESSION["card_type"] = $card_type;
                 $_SESSION["card_name"] = $card_name;
                 $_SESSION["card_number"] = $card_number;
@@ -238,6 +266,7 @@
     } else {
         $confirm_msg = "<p>Unable to connect to the database. Please try again later.</p>";
     }
+    //Navigate to receipt page
     header("location:receipt.php?message=$confirm_msg");
 
     ?>

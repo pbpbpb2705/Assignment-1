@@ -7,6 +7,7 @@
     <meta name="keywords" content="HTML, PHP">
     <meta name="author" content="MOON">
     <title> Login </title>
+    <link rel="icon" href="styles/images/logo.png" />
     <link rel="stylesheet" type="text/css" href="./styles/style.css">
 </head>
 
@@ -16,6 +17,7 @@
     require_once("settings.php");
     require_once("process_function.php");
     session_start();
+
         echo "<div class='enterform'>"
             . "<form method='post' action='login.php'>"
             . "<h1 class='enterform_title'> Login </h1>"
@@ -27,21 +29,25 @@
             . "</form>"
             . "<p> Don't have an account yet? <a href='./signup.php'> Register now! </a> </p>"
             . "</div>";
+    //User has logged in
     if (isset($_SESSION["username"])) {
 	header('location: manage.php');
 
     }
+    //Logging in attempt
     if (isset($_POST["username"])) {
 
-        $username = trim($_POST["username"]);
-        $password = trim($_POST["password"]);
+        $username = cleanseInput($_POST["username"]);
+        $password = cleanseInput($_POST["password"]);
 
+        //Create connection to database
         $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
         if (!$conn) {
             echo "<p> Unable to connect to the database. Please try again later. </p>";
         } else {
             $account_table = "account";
 
+            //Create account table if doesn't exist
             $create_table_query = "CREATE TABLE IF NOT EXISTS $account_table (
                     id INT AUTO_INCREMENT PRIMARY KEY,
                     username VARCHAR(255) NOT NULL,
@@ -52,9 +58,11 @@
             if (!$create_table_result) {
                 echo "<p> Failed to access to table. Please try again later. </p>";
             } else {
+                //Check if the username and password pair exists in the table
                 $query = "SELECT * FROM $account_table WHERE username='$username' AND password='$password'";
                 $result = mysqli_query($conn, $query);
                 if (!$result) {
+                    //Fail to connect
                     echo "<p> Failed to login. Please try again later. </p>";
                 } else {
                     if (mysqli_connect_errno()) {
@@ -63,10 +71,12 @@
                     $num_of_rows = mysqli_num_rows($result);
 
                     if ($num_of_rows > 0) {
+                        //Logging in successful
                         $_SESSION["username"] = $username;
                         $_SESSION["email"] = mysqli_fetch_assoc($result)["email"];
-			header('location: manage.php');
+			            header('location: manage.php');
                     } else {
+                        //Username doesn't exist
                         echo "<h2> Incorect username or password. $username </h2>
                               <p> Please try again <a href='./login.php'> here </a>. </p>
                             <p> Or create a new account <a href='./signup.php'> here </a>. </p>";
