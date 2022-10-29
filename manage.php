@@ -15,7 +15,10 @@
 	$page = "managePage";
 	include_once("includes/navbar.inc");
 	session_start();
-	if (!isset($_POST["username"])) {
+	if (isset($_SESSION["username"])) {
+		echo "<a class='btn-3' href='logout.php'> Logout </a>";
+	}
+	else {
 		header('location: login.php');
 	}
 	?>
@@ -396,7 +399,7 @@
 	?>
 	<br><br><br>
 	<!-- Enhancement -->
-	<h2 class="query_message">Advance Report</h2>
+	<h2 class="query_message" id="enhancement-1">Advance Report</h2>
 	<form method="post" action="manage.php">
 		<fieldset>
 			<legend>More advanced manage report:</legend>
@@ -592,6 +595,7 @@
 			mysqli_close($conn);
 		}
 	}
+
 	?>
 
 	<?php
