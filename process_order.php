@@ -126,7 +126,7 @@ if(!isset($_SERVER['HTTP_REFERER'])){
 	$error_msg .= "<p class='error-message'>You must select enquiry features.</p>\n";
     }
     if ($comments == "") {
-        $error_msg .= "<p class='error-message'>You must select your product.</p>\n";
+        $error_msg .= "<p class='error-message'>You must enter your comments.</p>\n";
     }
     if ($card_type == "none") {                                //if state has not been selected
         $error_msg .= "<p class='error-message'>You must select your card type.</p>\n";
@@ -265,7 +265,8 @@ if(!isset($_SERVER['HTTP_REFERER'])){
                 $_SESSION["product"] = $product;
                 $_SESSION["preferred_contact"] = $preferred_contact;
                 $_SESSION["features"] = $features;
-		        $_SESSION["order_cost"] = $cost;
+		$_SESSION["comments"] = $comments;
+		$_SESSION["order_cost"] = $cost;
                 $_SESSION["card_type"] = $card_type;
                 $_SESSION["card_name"] = $card_name;
                 $_SESSION["card_number"] = $card_number;

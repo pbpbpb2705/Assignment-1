@@ -33,6 +33,7 @@
             $product = $_SESSION["product"];
             $preferred_contact = $_SESSION["preferred_contact"];
             $features = $_SESSION["features"];
+	    $comments = $_SESSION["comments"];
 	    $cost = $_SESSION["order_cost"];
             $card_type = $_SESSION["card_type"];
             $card_name = $_SESSION["card_name"];
@@ -56,6 +57,8 @@
             . "<tr><th class='receipt_th'>Contact method</th><td class='receipt_td'>$preferred_contact</td></tr>"
 
             . "<tr><th class='receipt_th'>Features chosen:</th><td class='receipt_td'>$features</td></tr>"
+            . "<tr><th class='receipt_th'>Comments:</th><td class='receipt_td'>$comments</td></tr>"
+
             . "<tr><th class='receipt_th'>Total cost:</th><td class='receipt_td'>$cost</td></tr>"
 
             . "<tr><th class='receipt_th'>Card type:</th><td class='receipt_td'>$card_type</td></tr>"
