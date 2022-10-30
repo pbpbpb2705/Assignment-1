@@ -115,7 +115,7 @@
 	//if Search form was submitted
 	if (isset($_POST["Finding"])) {
 		$sort = "";
-		$condition = "";
+		$proviso = "";
 		// Sort by cost
 		if ($_POST["Arrange"] == "yes")
 			$sort = " ORDER BY order_cost";
@@ -180,85 +180,85 @@
 				echo "<h2 class='query-message'>Unable to connect to the database.</h2>";
 			} else {
 				if ($firstname != "") {
-					if ($condition != "")
-						$condition .= " AND ";
-					$condition .= "first_name LIKE '%$firstname%'";
+					if ($proviso != "")
+						$proviso .= " AND ";
+					$proviso .= "first_name LIKE '%$firstname%'";
 				}
 				if ($lastname != "") {
-					if ($condition != "")
-						$condition .= " AND ";
-					$condition .= "last_name LIKE '%$lastname%'";
+					if ($proviso != "")
+						$proviso .= " AND ";
+					$proviso .= "last_name LIKE '%$lastname%'";
 				}
 				if ($pending == "yes") {
-					if ($condition != "")
-						$condition .= " AND ";
-					$condition .= "order_status LIKE 'PENDING'";
+					if ($proviso != "")
+						$proviso .= " AND ";
+					$proviso .= "order_status LIKE 'PENDING'";
 				}
 				if (isset($_POST['product'])) {
 					$productstatus = $_POST["product"];
 					$product_index = "";
-					if ($condition != "")
-						$condition .= " AND (";
+					if ($proviso != "")
+						$proviso .= " AND (";
 					else
-						$condition .= " (";
+						$proviso .= " (";
 					if (in_array('mercury', $productstatus)) {
 						if ($product_index != "")
-							$condition .= " OR ";
-						$condition .= "enquiry LIKE '%Mercury%'";
+							$proviso .= " OR ";
+						$proviso .= "enquiry LIKE '%Mercury%'";
 						$product_index .= "mercury";
 					}
 					if (in_array('venus', $productstatus)) {
 						if ($product_index != "")
-							$condition .= " OR ";
-						$condition .= "enquiry LIKE '%Venus%'";
+							$proviso .= " OR ";
+						$proviso .= "enquiry LIKE '%Venus%'";
 						$product_index .= "venus";
 					}
 					if (in_array('earth', $productstatus)) {
 						if ($product_index != "")
-							$condition .= " OR ";
-						$condition .= "enquiry LIKE '%Earth%'";
+							$proviso .= " OR ";
+						$proviso .= "enquiry LIKE '%Earth%'";
 						$product_index .= "earth";
 					}
 					if (in_array('mars', $productstatus)) {
 						if ($product_index != "")
-							$condition .= " OR ";
-						$condition .= "enquiry LIKE '%Mars%'";
+							$proviso .= " OR ";
+						$proviso .= "enquiry LIKE '%Mars%'";
 						$product_index .= "mars";
 					}
 					if (in_array('jupiter', $productstatus)) {
 						if ($product_index != "")
-							$condition .= " OR ";
-						$condition .= "enquiry LIKE '%Jupiter%'";
+							$proviso .= " OR ";
+						$proviso .= "enquiry LIKE '%Jupiter%'";
 						$product_index .= "jupiter";
 					}
 					if (in_array('saturn', $productstatus)) {
 						if ($product_index != "")
-							$condition .= " OR ";
-						$condition .= "enquiry LIKE '%Saturn%'";
+							$proviso .= " OR ";
+						$proviso .= "enquiry LIKE '%Saturn%'";
 						$product_index .= "saturn";
 					}
 					if (in_array('uranus', $productstatus)) {
 						if ($product_index != "")
-							$condition .= " OR ";
-						$condition .= "enquiry LIKE '%Uranus%'";
+							$proviso .= " OR ";
+						$proviso .= "enquiry LIKE '%Uranus%'";
 						$product_index .= "uranus";
 					}
 					if (in_array('neptune', $productstatus)) {
 						if ($product_index != "")
-							$condition .= " OR ";
-						$condition .= "enquiry LIKE '%Neptune%'";
+							$proviso .= " OR ";
+						$proviso .= "enquiry LIKE '%Neptune%'";
 						$product_index .= "neptune";
 					}
-					$condition .= ")";
+					$proviso .= ")";
 				}
 			}
 		}
 
-		if ($condition != "") {
-			$condition = " WHERE " . $condition;
+		if ($proviso != "") {
+			$proviso = " WHERE " . $proviso;
 		}
 		//Initialize query
-		$query = "SELECT * FROM orders" . $condition . $sort . ";";
+		$query = "SELECT * FROM orders" . $proviso . $sort . ";";
 		$query_result = mysqli_query($conn, $query);				//execute the query and store the result into result pointer
 		if (!$query_result) {
 			echo "<h2 class='query-message'>Failed to execute query: ", $query, ".</h2>";

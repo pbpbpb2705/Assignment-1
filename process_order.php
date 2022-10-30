@@ -16,7 +16,7 @@
     <?php
     require_once("settings.php");
     require_once("process_function.php");
-if(!isset($_SERVER['HTTP_REFERER'])){
+    if(!isset($_SERVER['HTTP_REFERER'])){
 	header('location:enquire.php');
 	exit;
 }
@@ -265,8 +265,8 @@ if(!isset($_SERVER['HTTP_REFERER'])){
                 $_SESSION["product"] = $product;
                 $_SESSION["preferred_contact"] = $preferred_contact;
                 $_SESSION["features"] = $features;
-		$_SESSION["comments"] = $comments;
-		$_SESSION["order_cost"] = $cost;
+		        $_SESSION["comments"] = $comments;
+		        $_SESSION["order_cost"] = $cost;
                 $_SESSION["card_type"] = $card_type;
                 $_SESSION["card_name"] = $card_name;
                 $_SESSION["card_number"] = $card_number;
