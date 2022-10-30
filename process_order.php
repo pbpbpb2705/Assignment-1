@@ -104,7 +104,7 @@ if(!isset($_SERVER['HTTP_REFERER'])){
 	$features .= "Dat,";
     }
     if ($feature_2 != "") {
-	$features .= "InfDat,";
+	$features .= "Infdat,";
     }
 
     if ($feature_3 != "") {
@@ -112,7 +112,7 @@ if(!isset($_SERVER['HTTP_REFERER'])){
     }
 
     if ($feature_4 != "") {
-	$features .= "DatBank,";
+	$features .= "Bankdat,";
     }
 
     if ($feature_5 != "") {
@@ -189,7 +189,24 @@ if(!isset($_SERVER['HTTP_REFERER'])){
     if ($error_msg != "") {
         session_start();
         $_SESSION["error_msg"] = $error_msg;
-        //Pass message to fix order page
+        //Pass message and data to fix order page
+        $_SESSION["first_name"] = $first_name;
+        $_SESSION["last_name"] = $last_name;
+        $_SESSION["email"] = $email;
+        $_SESSION["address"] = $address;
+        $_SESSION["suburb"] = $suburb;
+        $_SESSION["state"] = $state;
+        $_SESSION["postcode"] = $postcode;
+        $_SESSION["phone"] = $phone;
+        $_SESSION["product"] = $product;
+        $_SESSION["preferred_contact"] = $preferred_contact;
+        $_SESSION["features"] = $features;
+        $_SESSION["comments"] = $comments;
+        $_SESSION["card_type"] = $card_type;
+        $_SESSION["card_name"] = $card_name;
+        $_SESSION["card_number"] = $card_number;
+        $_SESSION["card_expiry"] = $card_expiry;
+        $_SESSION["card_cvv"] = $card_cvv;
         header("location:fix_order.php");
         exit();
     }

@@ -29,12 +29,12 @@
             <fieldset id="name">
                 <legend><label for="first_name_box">Name</label></legend>
                 <div id="first">
-                    <input type='text' name='first_name' id='first_name_box' required='required' maxlength='25' pattern='[A-Za-z]+'>";
+                    <input value = "<?php echo $_SESSION["first_name"];?>" type='text' name='first_name' id='first_name_box' required='required' maxlength='25' pattern='[A-Za-z]+'>";
                     <br>
                     <label class='name_label' for='first_name_box'>First</label>;
                 </div>
                 <div id="last">
-                    <input type="text" name="last_name" id="last_name_box" required="required" maxlength="25" pattern="[A-Za-z]+">
+                    <input value = "<?php echo $_SESSION["last_name"];?>" type="text" name="last_name" id="last_name_box" required="required" maxlength="25" pattern="[A-Za-z]+">
                     <br>
                     <label class="name_label" for="last_name_box">Last</label>
                 </div>
@@ -45,7 +45,7 @@
                 <legend>
                     <label for="email">Email</label>
                 </legend>
-                <input type="email" name="email" id="email" required="required">
+                <input value = "<?php echo $_SESSION["email"];?>" type="email" name="email" id="email" required="required">
             </fieldset>
 
             <br>
@@ -54,10 +54,10 @@
                 <fieldset id="address">
                     <legend>Address</legend>
                     <label for="street">Street Address</label>
-                    <input type="text" name="street" id="street" required="required" maxlength="40">
+                    <input value = "<?php echo $_SESSION["address"];?>" type="text" name="street" id="street" required="required" maxlength="40">
                     <br />
                     <label for="suburb">Suburb/Town</label>
-                    <input type="text" name="suburb" id="suburb" required="required" maxlength="20">
+                    <input value = "<?php echo $_SESSION["suburb"];?>" type="text" name="suburb" id="suburb" required="required" maxlength="20">
                     <br />
                     <label for="state">State</label>
                     <select name="state" id="state">
@@ -71,27 +71,27 @@
                         <option value="ACT">ACT</option>
                     </select>
                     <label for="postcode">Postcode</label>
-                    <input type="text" name="postcode" id="postcode" maxlength="4" size="10" required="required" pattern="[0-9]+">
+                    <input value = "<?php echo $_SESSION["postcode"];?>" type="text" name="postcode" id="postcode" maxlength="4" size="10" required="required" pattern="[0-9]+">
                 </fieldset>
 
                 <fieldset id="phone_field">
                     <legend><label for="Phone">Phone number</label></legend>
-                    <input name="phone" id="Phone" type="text" maxlength="10" required="required" pattern="[0-9]+" placeholder="e.g 0123456789">
+                    <input value="<?php echo $_SESSION["phone"] ?>" name="phone" id="Phone" type="text" maxlength="10" required="required" pattern="[0-9]+" placeholder="e.g 0123456789">
                 </fieldset>
 
                 <fieldset id="pref_contact">
                     <legend id="pref_contact_legend">Preferred contact</legend>
 
                     <label class="choose_contact">Email
-                        <input required="required" type="radio" name="contact" value="Email">
+                        <input <?php if ($_SESSION["preferred_contact"] == "Email") {echo "checked";}?> required="required" type="radio" name="contact" value="Email">
                         <span class="checkmark"></span>
                     </label>
                     <label class="choose_contact">Post
-                        <input required="required" type="radio" name="contact" value="Post">
+                        <input <?php if ($_SESSION["preferred_contact"] == "Post") {echo "checked";}?> required="required" type="radio" name="contact" value="Post">
                         <span class="checkmark"></span>
                     </label>
                     <label class="choose_contact">Phone
-                        <input required="required" type="radio" name="contact" value="Phone">
+                        <input <?php if ($_SESSION["preferred_contact"] == "Phone") {echo "checked";}?> required="required" type="radio" name="contact" value="Phone">
                         <span class="checkmark"></span>
                     </label>
                 </fieldset>
@@ -103,14 +103,14 @@
                 <legend><label for="product">Product</label></legend>
                 <select name="product" id="product">
                     <option value="0">Choose an option</option>
-                    <option value="MERCURY Plan">Mercury</option>
-                    <option value="VENUS Plan">Venus</option>
-                    <option value="EARTH Plan">Earth</option>
-                    <option value="MARS Plan">Mars</option>
-                    <option value="JUPITER Plan">Jupiter</option>
-                    <option value="SATURN Plan">Saturn</option>
-                    <option value="URANUS Plan">Uranus</option>
-                    <option value="NEPTUNE Plan">Neptune</option>
+                    <option <?php if ($_SESSION["product"] == "MERCURY Plan") {echo "selected";}?> value="MERCURY Plan">Mercury</option>
+                    <option <?php if ($_SESSION["product"] == "VENUS Plan") {echo "selected";}?> value="VENUS Plan">Venus</option>
+                    <option <?php if ($_SESSION["product"] == "EARTH Plan") {echo "selected";}?> value="EARTH Plan">Earth</option>
+                    <option <?php if ($_SESSION["product"] == "MARS Plan") {echo "selected";}?> value="MARS Plan">Mars</option>
+                    <option <?php if ($_SESSION["product"] == "JUPITER Plan") {echo "selected";}?> value="JUPITER Plan">Jupiter</option>
+                    <option <?php if ($_SESSION["product"] == "SATURN Plan") {echo "selected";}?> value="SATURN Plan">Saturn</option>
+                    <option <?php if ($_SESSION["product"] == "URANUS Plan") {echo "selected";}?> value="URANUS Plan">Uranus</option>
+                    <option <?php if ($_SESSION["product"] == "NEPTUNE Plan") {echo "selected";}?> value="NEPTUNE Plan">Neptune</option>
                 </select>
             </fieldset>
 
@@ -118,41 +118,41 @@
                 <legend>Product feature:</legend>
 
                 <label class="choose_feature">Data
-                    <input type="checkbox" name="feature-1" value="Data">
+                    <input <?php if (strpos($_SESSION["features"], "Dat") !== false) {echo "checked";} ?> type="checkbox" name="feature-1" value="Data">
                     <span class="checksquare"></span>
                 </label>
 
 
                 <label class="choose_feature">Infinite Data
-                    <input type="checkbox" name="feature-2" value="Infinite Data">
+                    <input <?php if (strpos($_SESSION["features"], "Infdat") !== false) {echo "checked";} ?> type="checkbox" name="feature-2" value="Infinite Data">
                     <span class="checksquare"></span>
                 </label>
 
 
                 <label class="choose_feature">Unlimited Call&Text
-                    <input type="checkbox" name="feature-3" value="Unlimited Call&Text">
+                    <input <?php if (strpos($_SESSION["features"], "Call") !== false) {echo "checked";} ?> type="checkbox" name="feature-3" value="Unlimited Call&Text">
                     <span class="checksquare"></span>
                 </label>
 
                 <label class="choose_feature">Data bank
-                    <input type="checkbox" name="feature-4" value="Data bank">
+                    <input <?php if (strpos($_SESSION["features"], "Bankdat") !== false) {echo "checked";} ?> type="checkbox" name="feature-4" value="Data bank">
                     <span class="checksquare"></span>
                 </label>
 
                 <label class="choose_feature">International talk zone 1
-                    <input type="checkbox" name="feature-5" value="International Talk Zone 1">
+                    <input <?php if (strpos($_SESSION["features"], "Inter1") !== false) {echo "checked";} ?> type="checkbox" name="feature-5" value="International Talk Zone 1">
                     <span class="checksquare"></span>
                 </label>
 
                 <label class="choose_feature">International talk zone 2
-                    <input type="checkbox" name="feature-6" value="International Talk Zone 2">
+                    <input <?php if (strpos($_SESSION["features"], "Inter2") !== false) {echo "checked";} ?> type="checkbox" name="feature-6" value="International Talk Zone 2">
                     <span class="checksquare"></span>
                 </label>
             </fieldset>
 
             <fieldset id="comments_field">
                 <legend><label for="comments">Comments:</label></legend>
-                <textarea id="comments" name="comments" placeholder="Enter your comments here"></textarea>
+                <textarea value = "<?php echo $_SESSION["comments"];?>" id="comments" name="comments" placeholder="Enter your comments here"></textarea>
 
             </fieldset>
 
@@ -161,28 +161,28 @@
                 <div id="cardtype">
                 <select name="card_type" id="cardtype">
                     <option value="0">Choose an option</option>
-                    <option value="visa">Visa</option>
-                    <option value="mastercard">Mastercard</option>
-                    <option value="amex">American Express</option>
+                    <option <?php if ($_SESSION["card_type"] == "visa") {echo "selected";}?> value="visa">Visa</option>
+                    <option <?php if ($_SESSION["card_type"] == "mastercard") {echo "selected";}?> value="mastercard">Mastercard</option>
+                    <option <?php if ($_SESSION["card_type"] == "amex") {echo "selected";}?>value="amex">American Express</option>
                 </select>
                 </div>
                 <div id="cardname">
-                    <input type="text" name="card-name" id="card-name-box">
+                    <input value = "<?php echo $_SESSION["card_name"];?>" type="text" name="card_name" id="card-name-box">
                     <br>
                     <label class="name_label" for="card-name-box">Owner's name:</label>
                 </div>
                 <div id="cardnumber">
-                    <input type="text" name="card-number" id="card-number-box">
+                    <input value = "<?php echo $_SESSION["card_number"];?>" type="text" name="card_number" id="card-number-box">
                     <br>
                     <label class="name_label" for="card-number-box">Card number:</label>
                 </div>
                 <div id="cardexpiry">
-                    <input type="text" name="card-expiry" id="card-expiry-box">
+                    <input value = "<?php echo $_SESSION["card_expiry"];?>" type="text" name="card_expiry" id="card-expiry-box">
                     <br>
                     <label class="name_label" for="card-expiry-box">Expiry date:</label>
                 </div>
                 <div id="cardcvv">
-                    <input type="text" name="card-cvv" id="card-cvv-box">
+                    <input value = "<?php echo $_SESSION["card_cvv"];?>" type="text" name="card_cvv" id="card-cvv-box">
                     <br>
                     <label class="name_label" for="card-cvv-box">Card CVV:</label>
                 </div>

@@ -15,6 +15,7 @@
     <?php
 	include_once("includes/navbar.inc");
 	require_once("settings.php");
+	require_once("process_function.php");
         if (!isset($_POST["username"]))
         {
     ?>
@@ -23,10 +24,10 @@
                 <h1 class="enterform_title"> Sign Up </h1>
                 <p class="enterform_input_name"> <strong> Email </strong> </p>
                 <p> <input type="text" class="enterform_input" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Email address"> </p>
-                <p class="enterform_input_name"> <strong> Username </strong> <em> (6-24 lowercase characters) </em> </p>
-                <p> <input type="text" class="enterform_input" name="username" pattern="[a-z].{6,24}" placeholder="Username"> </p>
-                <p class="enterform_input_name"> <strong> Password </strong> <em> (6-18 characters, must have at least one uppercase, one lowercase letter) </em> </p>
-                <p> <input type="password" class="enterform_input" name="password" pattern="(?=.*[a-z])(?=.*[A-Z]).{6,18}" placeholder="Password"> </p>
+                <p class="enterform_input_name"> <strong> Username </strong> <em> (4-24 lowercase characters) </em> </p>
+                <p> <input type="text" class="enterform_input" name="username" pattern="[a-z].{4,24}" placeholder="Username"> </p>
+                <p class="enterform_input_name"> <strong> Password </strong> <em> (6-18 characters, must have at least one lowercase letter) </em> </p>
+                <p> <input type="password" class="enterform_input" name="password" pattern="(?=.*[a-z]).{4,18}" placeholder="Password"> </p>
                 <p> <input type="submit" class="enterform_submit" name="submit" value="Register"> </p>
             </form>
             <p> Already have an Account? Login <a href="./login.php"> here </a> </p>
@@ -35,9 +36,9 @@
         }
         else
         {
-            $email = trim($_POST["email"]);
-            $username = trim($_POST["username"]);
-            $password = trim($_POST["password"]);
+            $email = cleanseInput($_POST["email"]);
+            $username = cleanseInput($_POST["username"]);
+            $password = cleanseInput($_POST["password"]);
 
             $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
             if (!$conn)
